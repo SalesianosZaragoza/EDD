@@ -36,4 +36,6 @@ public class ReverseSentences {
 		System.out.println(reverseRecursive(text));
 	}
 
+	public static void hola1() {
+	}
 }
