@@ -38,4 +38,7 @@ public class ReverseSentences {
 
 	public static void hola1() {
 	}
+
+	public static void hola2() {
+	}
 }
