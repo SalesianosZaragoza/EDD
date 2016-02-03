@@ -13,7 +13,7 @@ public class ContactPage {
 		map.put("admin", new RenderAdmin());
 	}
 
-	public UsingHashMap() {
+	public ContactPage() {
 		iterateMap();
 	}
 
@@ -27,7 +27,7 @@ public class ContactPage {
 	}
 
 	public static void main(String[] args) {
-		UsingHashMap usingHashMap;
-		usingHashMap = new UsingHashMap();
+		ContactPage contactPage;
+		contactPage = new ContactPage();
 	}
 }

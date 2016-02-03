@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class ReverseSentences extends {
+public class ReverseSentences {
 
 	public static String reverseRecursive(String str) {
 		char charArray[] = str.toCharArray();
