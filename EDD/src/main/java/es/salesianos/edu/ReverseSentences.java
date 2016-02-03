@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class ReverseSentences {
+public class ReverseSentences extends {
 
 	public static String reverseRecursive(String str) {
 		char charArray[] = str.toCharArray();
@@ -34,6 +34,12 @@ public class ReverseSentences {
 		System.out.println(reverseWordsWithCollections(text));
 		System.out.println(reverseWordsInOneCodeLine(text));
 		System.out.println(reverseRecursive(text));
+	}
+
+	public static void hola1() {
+	}
+
+	public static void hola2() {
 	}
 
 }
