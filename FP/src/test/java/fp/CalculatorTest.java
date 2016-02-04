@@ -1,7 +1,14 @@
 package fp;
 
 
-import static fp.Calculator.*;
+import static fp.Calculator.checkIsPalindrome;
+import static fp.Calculator.classTypeOf;
+import static fp.Calculator.divisors;
+import static fp.Calculator.fibonacci;
+import static fp.Calculator.isLeapYear;
+import static fp.Calculator.isValidDate;
+import static fp.Calculator.speakToMe;
+import static fp.Calculator.stepThisNumber;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -51,21 +58,21 @@ public class CalculatorTest {
 	public void testIsPalindrome() {
 		assertNotNull(checkIsPalindrome(null));
 		assertTrue(
-				checkIsPalindrome("No Mara, sometamos o matemos a Ramón.");
+checkIsPalindrome("No Mara, sometamos o matemos a Ramón."));
 		assertTrue(
-				checkIsPalindrome("¿Acaso hubo búhos acá?");
+checkIsPalindrome("¿Acaso hubo búhos acá?"));
 		assertTrue(
-				checkIsPalindrome("No lata, no: la totalidad arada dilato talón a talón.");
+checkIsPalindrome("No lata, no: la totalidad arada dilato talón a talón."));
 		assertTrue(
-				checkIsPalindrome("Allí, tieta Mercè, faci cafè, crema, te i til·la");
+checkIsPalindrome("Allí, tieta Mercè, faci cafè, crema, te i til·la"));
 		assertTrue(
-				checkIsPalindrome("No Mara, sometamos o matemos a Ramón.");
+checkIsPalindrome("No Mara, sometamos o matemos a Ramón."));
 		assertFalse(
 				checkIsPalindrome("Buena suerte con los Test"));
 		assertFalse(
-				checkIsPalindrome("4ª ley de kepler: gazpacho y mochilo siempre van con pincho"));
+checkIsPalindrome("4ª ley de kepler: gazpacho y mochilo siempre van con pincho"));
 		assertFalse(
-				checkIsPalindrome("No me guardéis rencor, al menos no mucho"));
+checkIsPalindrome("No me guardéis rencor, al menos no mucho"));
 		System.out.println("2P");
 	}
 
