@@ -1,0 +1,14 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="helloBean1h" class="es.salesianos.Helloworld">
+		<property name="name" value="clase1h" />
+	</bean>
+	
+	<bean id="helloBean2h" class="es.salesianos.Helloworld">
+		<property name="name" value="clase2h" />
+	</bean>
+	
+</beans>
