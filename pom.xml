@@ -12,8 +12,9 @@
     <name>parent</name>
 
     <modules>
-        <module>EDD</module>
+        <module>Core</module>
         <module>FP</module>
+        <module>Junit</module>
     </modules>
 
     <build>
