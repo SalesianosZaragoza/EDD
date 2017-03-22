@@ -3,6 +3,7 @@ package fp;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.awt.Button;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hamcrest.core.IsNull;
@@ -11,55 +12,56 @@ public class Calculator {
 
 	public static void main(String[] args)
 	{
-//		int[] vector = stepThisNumber(1600, 6);
+		int[] vector = stepThisNumber(12, 3);
 //		int[] vector = divisors(20);
-//		for (int i = 0; i < vector.length; i++) System.out.printf("%3d ", vector[i]);
+		for (int i = 0; i < vector.length; i++) System.out.printf("%3d ", vector[i]);
 //		System.out.println(checkIsPalindrome("tacocat"));
 //		System.out.println(checkIsPalindrome("T·cOc·t"));
+//		List<Integer> lista = fibonacci(10);
+//		for (Integer numero : lista) System.out.println(numero);
+		System.out.println(speakToMe(3));
 	}
 	
-	/*
-     * este metodo devuelve el Class del object que le pasamos
-     */
-	// DONE
-	public static Class classTypeOf(Object x) {
-	
+	public static Class classTypeOf(Object x)
+	{
 	return x.getClass();
 	}
-
-	/*
-     * devuelve una lista con los n n√∫meros de la serie de fibonacci.
-     */
-	public static List<Integer> fibonacci(int n) {
-		throw  new NotImplementedException();
+	
+	public static List<Integer> fibonacci(int n)
+	{
+		List<Integer> fibonacci = new ArrayList<Integer>();
+		for (int i = 0; i <= n; i++)
+		{
+			if (i == 0 || i == 1)
+			{
+				fibonacci.add(i);
+			}
+			else
+			{
+				fibonacci.add(fibonacci.get(i - 1) + fibonacci.get(i - 2));
+			}
+		}
+	return fibonacci;
 	}
 
-	/*
-	 * Escribir todos los n√∫meros del number al 0 de step en step.
-	 */
-	// DONE
 	public static int[] stepThisNumber(int number, int step)
 	{
-//		if (step <= 0) 
-//		{
-//		    throw new IllegalArgumentException("That's not a wise step choice, Chief...");
-//		}
-		int[] result = new int[number / step + 1];
+		if (step <= 0) 
+		{
+			int[] result = {-1};
+		    return result;
+		}
+		
+		int[] result = new int[number / step - 1];
 		int current = number;
 		int counter = 0;
-		while(current - step >= 0)
+		while(current - step > 0)
 		{
-			current = number - step * counter;
-			result[counter++] = current;
+			result[counter++] = (current -= step);
 		}
 	return result;
 	}
-
-	/*
-	 * M√≥dulo al que se le pasa un n√∫mero entero del 0 al 20 y devuelve los
-	 * divisores que tiene.
-	 */
-	// DONE
+	
 	public static int[] divisors(int n)
 	{
 		if (n < 0 || n > 20)
@@ -79,10 +81,6 @@ public class Calculator {
 	return divisors;
 	}
 
-	/*
-	 * Toma como par√°metros una cadena de caracteres y devuelve cierto si la cadena resulta ser un pal√≠ndromo
-	 */
-	// DONE
 	public static boolean checkIsPalindrome(String cadena)
 	{
 		String real = makeStandard(cadena);
@@ -113,10 +111,6 @@ public class Calculator {
 	return standard;
 	}
 
-	/*
-	 * Pedir un n√∫mero de 0 a 99 y mostrarlo escrito. Por ejemplo, para 56
-	 * mostrar: cincuenta y seis
-	 */
 	public static String speakToMe(int n)
 	{
 		String answer = "";
@@ -124,49 +118,81 @@ public class Calculator {
 		{
 		    throw new IllegalArgumentException("Only integers between 0 and 99 are allowed");
 		} 
-		else if (n == 0)
+		else if (n == 0) // AquÌ podrÌan harcodearse otros ˙nicos, como once, doce...
 		{
 			answer = "Cero";
 		return answer;
 		}
 		int leftNumber = n / 10;
 		int rightNumber = n % 10;
-		switch (leftNumber) {
-		case 1:
-			answer += "Diez";
-		case 2:
-			answer += "Veinte";
-			break;
-		case 3:
-			answer += "Treinta";
-			break;
-		case 4:
-			answer += "Cuarenta";
-			break;
-		case 5:
-			answer += "Cincuenta";
-			break;
-		case 6:
-			answer += "Sesenta";
-			break;
-		case 7:
-			answer += "Setenta";
-			break;
-		case 8:
-			answer += "Ochenta";
-			break;
-		case 9:
-			answer += "Noventa";
-			break;
+		
+		switch (leftNumber)
+		{
+			case 1:
+				answer += "Diez";
+				break;
+			case 2:
+				answer += "Veinte";
+				break;
+			case 3:
+				answer += "Treinta";
+				break;
+			case 4:
+				answer += "Cuarenta";
+				break;
+			case 5:
+				answer += "Cincuenta";
+				break;
+			case 6:
+				answer += "Sesenta";
+				break;
+			case 7:
+				answer += "Setenta";
+				break;
+			case 8:
+				answer += "Ochenta";
+				break;
+			case 9:
+				answer += "Noventa";
+				break;
 		}
+		
+		if (leftNumber != 0) answer += " y ";
+		
+		switch (rightNumber)
+		{
+			case 1:
+				answer += "Uno";
+				break;
+			case 2:
+				answer += "Dos";
+				break;
+			case 3:
+				answer += "Tres";
+				break;
+			case 4:
+				answer += "Cuatro";
+				break;
+			case 5:
+				answer += "Cinco";
+				break;
+			case 6:
+				answer += "Seis";
+				break;
+			case 7:
+				answer += "Siete";
+				break;
+			case 8:
+				answer += "Ocho";
+				break;
+			case 9:
+				answer += "Nueve";
+				break;
+		}
+		
 	return answer;
 	}
-
-	/*
-	 * este metodo devuelve cierto si el a√±o de la fecha es bisiesto fecha
-	 * dd-MM-yyyy
-	 */
-	//DONE
+	
 	public static boolean isLeapYear(String fecha)
 	{
 		// el aÒo es bisiesto si es divisible por 4
@@ -175,10 +201,6 @@ public class Calculator {
 	return false;
 	}
 
-	/*
-	 * este metodo devuelve cierto si la fecha es v√°lida
-	 */
-	//DONE
 	public static boolean isValidDate(String date)
 	{
 		if (date.length() != 10) return false;
