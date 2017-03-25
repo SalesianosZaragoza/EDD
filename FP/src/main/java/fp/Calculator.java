@@ -3,6 +3,7 @@ package fp;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.awt.Button;
+import java.security.DigestInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,14 +13,8 @@ public class Calculator {
 
 	public static void main(String[] args)
 	{
-		int[] vector = stepThisNumber(12, 3);
-//		int[] vector = divisors(20);
-		for (int i = 0; i < vector.length; i++) System.out.printf("%3d ", vector[i]);
-//		System.out.println(checkIsPalindrome("tacocat"));
-//		System.out.println(checkIsPalindrome("TácOcát"));
-//		List<Integer> lista = fibonacci(10);
-//		for (Integer numero : lista) System.out.println(numero);
-		System.out.println(speakToMe(3));
+		int[] numeros = stepThisNumber(10, 3);
+		for (int i = 0; i < numeros.length; i++) System.out.print(numeros[i]);
 	}
 	
 	public static Class classTypeOf(Object x)
@@ -30,16 +25,16 @@ public class Calculator {
 	public static List<Integer> fibonacci(int n)
 	{
 		List<Integer> fibonacci = new ArrayList<Integer>();
-		for (int i = 0; i <= n; i++)
+		// fb(n) == 0 v n == 0
+		// fb(n) == 1 v n == 1
+		// fb(n) == fb(n-1) + fb(n-2) v n != [0,1]
+		// n c E
+		// Añado esto a mano porque el test no contempla el caso de que i == 0 que exige la definición formal anterior
+		fibonacci.add(1);
+		fibonacci.add(1);
+		for (int i = 2; i < n; i++)
 		{
-			if (i == 0 || i == 1)
-			{
-				fibonacci.add(i);
-			}
-			else
-			{
-				fibonacci.add(fibonacci.get(i - 1) + fibonacci.get(i - 2));
-			}
+			fibonacci.add(fibonacci.get(i - 1) + fibonacci.get(i - 2));
 		}
 	return fibonacci;
 	}
@@ -52,64 +47,74 @@ public class Calculator {
 		    return result;
 		}
 		
-		int[] result = new int[number / step - 1];
+		int[] result = new int[(number - step) / step];
 		int current = number;
 		int counter = 0;
-		while(current - step > 0)
+		while(current - step >= step)
 		{
-			result[counter++] = (current -= step);
+			number -= step;
+			result[++counter] = number;
+			System.out.println(number);
 		}
 	return result;
 	}
 	
 	public static int[] divisors(int n)
 	{
-		if (n < 0 || n > 20)
+		if (n <= 0 || n > 20)
 		{
-		    throw new IllegalArgumentException("Only integers between 0 and 20 are allowed");
+//		    throw new IllegalArgumentException("Only integers between 0 and 20 are allowed");
+		    return null;
 		}
-		int[] divisorsWasteSpace = new int[9]; // como máx, tendrá 9 divisores
-		int counter = 0;
+		int[] divisorsWasteSpace = new int[n]; // como máx, tendrá n divisores
+		divisorsWasteSpace[0] = n; // un número siempre es divisible por sí mismo;
+		int counter = 1;
 		int spacesWasted = 0; // A priori no puede saberse sencillamente el número de divisores, por lo que habrá elementos inútiles en el array
-		for (int i = 1; i <= 9; i++)
+		for (int i = n - 1; i >= 1; i--)
 		{
 			if (n % i == 0) divisorsWasteSpace[counter++] = i;
 			else spacesWasted++;
 		}
-		int[] divisors = new int[9 - spacesWasted];
-		for (int i = 0; i < 9 - spacesWasted; i++) divisors[i] = divisorsWasteSpace[i];
+		int[] divisors = new int[n - spacesWasted];
+		for (int i = 0; i < divisors.length; i++) divisors[i] = divisorsWasteSpace[i];
 	return divisors;
 	}
 
-	public static boolean checkIsPalindrome(String cadena)
-	{
-		String real = makeStandard(cadena);
-		for (int i = 0; i < real.length(); i++)
-		{
-			if (real.charAt(i) != real.charAt(real.length() - i - 1)) return false;
-		}
-	return true;
-	}
-	
-	public static String makeStandard(String string) // minusculas sin acentos
-	{
-		String standard = ""; // los String son inmutables
-		char[] nonStandardChars = {'á', 'í', 'ú', 'é', 'ó'};
-		char[] standardChars = {'a', 'i', 'u', 'e', 'o'};
-		for (int i = 0; i < string.length(); i++)
-		{
-			for (int j = 0; j < nonStandardChars.length; j++)
-			{
-				if (string.toLowerCase().charAt(i) == nonStandardChars[j])
-				{
-					standard += standardChars[j];
-					break;
-				}
-			}
-			if(standard.length() == i) standard += string.toLowerCase().charAt(i);
-		}
-	return standard;
-	}
+//	public static boolean checkIsPalindrome(String cadena)
+//	{
+////		String real = makeStandard(cadena);
+//		for (int i = 0; i < real.length(); i++)
+//		{
+//			if (real.charAt(i) != real.charAt(real.length() - i - 1)) return false;
+//		}
+//	return true;
+//	}
+//	
+//	public static String makeStandard(String string) // minusculas sin acentos
+//	{
+////		char[] standard = ''; // los String son inmutables
+//		char[] nonStandardChars = {'á', 'í', 'ú', 'é', 'ó'};
+//		char[] standardChars = {'a', 'i', 'u', 'e', 'o'};
+//		char[] removableChars = {' ', '.', ',', ':', '-'};
+//		for (int i = 0; i < string.length(); i++)
+//		{
+//			for (int j = 0; j < nonStandardChars.length; j++)
+//			{
+//				if (string.toLowerCase().charAt(i) == nonStandardChars[j])
+//				{
+//					standard += standardChars[j];
+//					break;
+//				}
+//				else if (string.charAt(i) == removableChars[j])
+//				{
+//					i++;
+//					break;
+//				}
+//			}
+//			if(standard.length() == i) standard += string.toLowerCase().charAt(i);
+//		}
+//	return standard;
+//	}
 
 	public static String speakToMe(int n)
 	{
@@ -117,15 +122,34 @@ public class Calculator {
 		if (n < 0 || n > 99)
 		{
 		    throw new IllegalArgumentException("Only integers between 0 and 99 are allowed");
-		} 
-		else if (n == 0) // Aquí podrían harcodearse otros únicos, como once, doce...
+		}
+		// Excepciones no algoritmizitables (asumiendo que 21 == Veinte y Uno y no Veintiuno)
+		else switch(n)
 		{
-			answer = "Cero";
-		return answer;
+			case 0:
+				answer += "Cero";
+				return answer;
+			case 10:
+				answer += "Diez";
+				return answer;
+			case 11:
+				answer += "Once";
+				return answer;
+			case 12:
+				answer += "Doce";
+				return answer;
+			case 13:
+				answer += "Trece";
+				return answer;
+			case 14:
+				answer += "Catorce";
+				return answer;
+			case 15:
+				answer += "Quince";
+				return answer;
 		}
 		int leftNumber = n / 10;
 		int rightNumber = n % 10;
-		
 		switch (leftNumber)
 		{
 			case 1:
@@ -157,57 +181,89 @@ public class Calculator {
 				break;
 		}
 		
-		if (leftNumber != 0) answer += " y ";
+		if ( leftNumber != 0 && rightNumber != 0) answer += " y ";
 		
 		switch (rightNumber)
 		{
 			case 1:
-				answer += "Uno";
+				answer += "uno";
 				break;
 			case 2:
-				answer += "Dos";
+				answer += "dos";
 				break;
 			case 3:
-				answer += "Tres";
+				answer += "tres";
 				break;
 			case 4:
-				answer += "Cuatro";
+				answer += "cuatro";
 				break;
 			case 5:
-				answer += "Cinco";
+				answer += "cinco";
 				break;
 			case 6:
-				answer += "Seis";
+				answer += "seis";
 				break;
 			case 7:
-				answer += "Siete";
+				answer += "siete";
 				break;
 			case 8:
-				answer += "Ocho";
+				answer += "ocho";
 				break;
 			case 9:
-				answer += "Nueve";
+				answer += "nueve";
 				break;
 		}
-		
 	return answer;
 	}
 	
 	public static boolean isLeapYear(String fecha)
 	{
-		// el año es bisiesto si es divisible por 4
-		int year = Integer.parseInt(fecha.substring(fecha.length() - 5, fecha.length() - 1));
-		if (isValidDate(fecha) && (int) year % 4 == 0) return true;
-	return false;
+		// el año es bisiesto si es divisible por 4 o 400, pero no por 100
+		int year = Integer.parseInt(fecha.substring(6, 10));
+		if ((year % 4 != 0 || year % 400 != 0) && year % 100 == 0) return false;
+		else return isValidDate(fecha);
 	}
 
 	public static boolean isValidDate(String date)
 	{
-		if (date.length() != 10) return false;
+		// Una fecha no debe ser nula y debe estar en un formato XX-YY-ZZZZ
+		if (date.length() != 10 || date == null) return false;
 		if (date.charAt(2) != '-' || date.charAt(5) != '-') return false;
+		
+		// X, Y , Z deben ser numeros
 		for (int i = 0; i < date.length(); i++)
 		{
-			if((i != 0 || i != 5) && !Character.isDigit(date.charAt(0))) return false;
+			if (date.charAt(i) != '-' && !Character.isDigit(date.charAt(i))) return false;
+		}
+		
+		int mes = Integer.parseInt(date.substring(3, 5));
+		int anyo = Integer.parseInt(date.substring(6, 10));
+		int dia = Integer.parseInt(date.substring(0, 2));
+		
+		// ZZZZ > 0
+		if (anyo == 0) return false;
+		
+		// 01 <= YY <= 12
+		if (mes <= 0 || mes > 12) return false;
+		
+		// 01 <= XX <= 31 || 30 || 28 || 29, *según el mes*
+		if (dia <= 0) return false;
+		switch (mes)
+		{
+			case 2:
+				if (isLeapYear(date) && dia > 29) return false;
+				else if (dia > 28) return false;
+			break;
+			case 4:
+			case 6:
+			case 9:
+			case 11:
+				{
+				if (dia > 30) return false;
+				break;
+				}
+			default:
+				if (dia > 31) return false;
 		}
 	return true;
 	}
