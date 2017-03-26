@@ -91,7 +91,7 @@ checkIsPalindrome("No me guardéis rencor, al menos no mucho"));
 
 	@Test
 	public void testIsLeapYear() {
-//		assertNotNull(isLeapYear(""));
+		assertNotNull(isLeapYear(""));
 		assertTrue(isLeapYear("01-01-1904"));
 		assertTrue(isLeapYear("01-01-1928"));
 		assertFalse(isLeapYear("01-01-2100"));

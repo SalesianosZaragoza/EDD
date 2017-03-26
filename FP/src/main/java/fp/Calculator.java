@@ -204,8 +204,10 @@ public class Calculator {
 	
 	public static boolean isLeapYear(String fecha)
 	{
+		if (fecha == null || fecha.length() != 10) return false;
 		// el año es bisiesto si es divisible por 4 o 400, pero no por 100
 		int year = Integer.parseInt(fecha.substring(6, 10));
+		System.out.println(year);
 		if ((year % 4 != 0 || year % 400 != 0) && year % 100 == 0) return false;
 		else return isValidDate(fecha);
 	}
@@ -213,7 +215,7 @@ public class Calculator {
 	public static boolean isValidDate(String date)
 	{
 		// Una fecha no debe ser nula y debe estar en un formato XX-YY-ZZZZ
-		if (date.length() != 10 || date == null) return false;
+		if (date == null || date.length() != 10) return false;
 		if (date.charAt(2) != '-' || date.charAt(5) != '-') return false;
 		
 		// X, Y , Z deben ser numeros
