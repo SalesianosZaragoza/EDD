@@ -1,22 +1,10 @@
 package fp;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import java.awt.Button;
-import java.security.DigestInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hamcrest.core.IsNull;
-
 public class Calculator {
 
-	public static void main(String[] args)
-	{
-		int[] numeros = stepThisNumber(10, 3);
-		for (int i = 0; i < numeros.length; i++) System.out.print(numeros[i]);
-	}
-	
 	public static Class classTypeOf(Object x)
 	{
 	return x.getClass();
@@ -25,6 +13,7 @@ public class Calculator {
 	public static List<Integer> fibonacci(int n)
 	{
 		List<Integer> fibonacci = new ArrayList<Integer>();
+		// ** Definicion **
 		// fb(n) == 0 v n == 0
 		// fb(n) == 1 v n == 1
 		// fb(n) == fb(n-1) + fb(n-2) v n != [0,1]
@@ -47,14 +36,13 @@ public class Calculator {
 		    return result;
 		}
 		
-		int[] result = new int[(number - step) / step];
+		int[] result = new int[((number - step) / step) + ((number - step) % step)];
 		int current = number;
 		int counter = 0;
-		while(current - step >= step)
+		while(counter < result.length)
 		{
-			number -= step;
-			result[++counter] = number;
-			System.out.println(number);
+			current -= step;
+			result[counter++] = current;
 		}
 	return result;
 	}
@@ -80,41 +68,39 @@ public class Calculator {
 	return divisors;
 	}
 
-//	public static boolean checkIsPalindrome(String cadena)
-//	{
-////		String real = makeStandard(cadena);
-//		for (int i = 0; i < real.length(); i++)
-//		{
-//			if (real.charAt(i) != real.charAt(real.length() - i - 1)) return false;
-//		}
-//	return true;
-//	}
-//	
-//	public static String makeStandard(String string) // minusculas sin acentos
-//	{
-////		char[] standard = ''; // los String son inmutables
-//		char[] nonStandardChars = {'á', 'í', 'ú', 'é', 'ó'};
-//		char[] standardChars = {'a', 'i', 'u', 'e', 'o'};
-//		char[] removableChars = {' ', '.', ',', ':', '-'};
-//		for (int i = 0; i < string.length(); i++)
-//		{
-//			for (int j = 0; j < nonStandardChars.length; j++)
-//			{
-//				if (string.toLowerCase().charAt(i) == nonStandardChars[j])
-//				{
-//					standard += standardChars[j];
-//					break;
-//				}
-//				else if (string.charAt(i) == removableChars[j])
-//				{
-//					i++;
-//					break;
-//				}
-//			}
-//			if(standard.length() == i) standard += string.toLowerCase().charAt(i);
-//		}
-//	return standard;
-//	}
+	public static boolean checkIsPalindrome(String cadena)
+	{
+		if (cadena == null || cadena.length() == 0) return false;
+		String real = makeStandard(cadena);
+		for (int i = 0; i < real.length() / 2; i++)
+		{
+			if (real.charAt(i) != real.charAt(real.length() - i - 1)) return false;
+		}
+	return true;
+	}
+	
+	public static String makeStandard(String string) // letras en minusculas sin acentos
+	{
+		String standard = ""; // los String son inmutables
+		char[] nonStandardChars = {'á', 'í', 'ú', 'é', 'ó'};
+		char[] standardChars = {'a', 'i', 'u', 'e', 'o'};
+		int indiceSustituir;
+		for (int i = 0; i < string.length(); i++)
+		{
+			indiceSustituir = -1;
+			for (int j = 0; j < nonStandardChars.length; j++)
+			{
+				if (string.toLowerCase().charAt(i) == nonStandardChars[j])
+				{
+					indiceSustituir = j;
+					break;
+				}
+			}
+			if (indiceSustituir != -1) standard += standardChars[indiceSustituir];
+			else if (Character.isLetter(string.charAt(i))) standard += Character.toLowerCase(string.charAt(i));
+		}
+	return standard;
+	}
 
 	public static String speakToMe(int n)
 	{
@@ -248,7 +234,7 @@ public class Calculator {
 		
 		// 01 <= XX <= 31 || 30 || 28 || 29, *según el mes*
 		if (dia <= 0) return false;
-		switch (mes)
+		else switch (mes)
 		{
 			case 2:
 				if (isLeapYear(date) && dia > 29) return false;
@@ -258,10 +244,10 @@ public class Calculator {
 			case 6:
 			case 9:
 			case 11:
-				{
+			{
 				if (dia > 30) return false;
 				break;
-				}
+			}
 			default:
 				if (dia > 31) return false;
 		}
