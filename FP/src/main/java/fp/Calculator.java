@@ -109,14 +109,11 @@ public class Calculator {
 		{
 		    throw new IllegalArgumentException("Only integers between 0 and 99 are allowed");
 		}
-		// Excepciones no algoritmizitables (asumiendo que 21 == Veinte y Uno y no Veintiuno)
+		// Excepciones no algoritmizitables (asumiendo que 16 == Diez y seis y no Dieciséis, 21 == Veinte y uno y no Veintiuno y análogos)
 		else switch(n)
 		{
 			case 0:
 				answer += "Cero";
-				return answer;
-			case 10:
-				answer += "Diez";
 				return answer;
 			case 11:
 				answer += "Once";
@@ -207,7 +204,6 @@ public class Calculator {
 		if (fecha == null || fecha.length() != 10) return false;
 		// el año es bisiesto si es divisible por 4 o 400, pero no por 100
 		int year = Integer.parseInt(fecha.substring(6, 10));
-		System.out.println(year);
 		if ((year % 4 != 0 || year % 400 != 0) && year % 100 == 0) return false;
 		else return isValidDate(fecha);
 	}
