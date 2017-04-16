@@ -18,7 +18,7 @@ public class Calculator {
 		// fb(n) == 1 v n == 1
 		// fb(n) == fb(n-1) + fb(n-2) v n != [0,1]
 		// n c E
-		// Añado esto a mano porque el test no contempla el caso de que i == 0 que exige la definición formal anterior
+		// Aï¿½ado esto a mano porque el test no contempla el caso de que i == 0 que exige la definiciï¿½n formal anterior
 		fibonacci.add(1);
 		fibonacci.add(1);
 		for (int i = 2; i < n; i++)
@@ -54,10 +54,10 @@ public class Calculator {
 //		    throw new IllegalArgumentException("Only integers between 0 and 20 are allowed");
 		    return null;
 		}
-		int[] divisorsWasteSpace = new int[n]; // como máx, tendrá n divisores
-		divisorsWasteSpace[0] = n; // un número siempre es divisible por sí mismo;
+		int[] divisorsWasteSpace = new int[n]; // como mï¿½x, tendrï¿½ n divisores
+		divisorsWasteSpace[0] = n; // un nï¿½mero siempre es divisible por sï¿½ mismo;
 		int counter = 1;
-		int spacesWasted = 0; // A priori no puede saberse sencillamente el número de divisores, por lo que habrá elementos inútiles en el array
+		int spacesWasted = 0; // A priori no puede saberse sencillamente el nï¿½mero de divisores, por lo que habrï¿½ elementos inï¿½tiles en el array
 		for (int i = n - 1; i >= 1; i--)
 		{
 			if (n % i == 0) divisorsWasteSpace[counter++] = i;
@@ -82,7 +82,7 @@ public class Calculator {
 	public static String makeStandard(String string) // letras en minusculas sin acentos
 	{
 		String standard = ""; // los String son inmutables
-		char[] nonStandardChars = {'á', 'í', 'ú', 'é', 'ó'};
+		char[] nonStandardChars = {'Ã¡', 'Ã­', 'Ãº', 'Ã©', 'Ã³'};
 		char[] standardChars = {'a', 'i', 'u', 'e', 'o'};
 		int indiceSustituir;
 		for (int i = 0; i < string.length(); i++)
@@ -109,7 +109,7 @@ public class Calculator {
 		{
 		    throw new IllegalArgumentException("Only integers between 0 and 99 are allowed");
 		}
-		// Excepciones no algoritmizitables (asumiendo que 16 == Diez y seis y no Dieciséis, 21 == Veinte y uno y no Veintiuno y análogos)
+		// Excepciones no algoritmizitables (asumiendo que 16 == Diez y seis y no Diecisï¿½is, 21 == Veinte y uno y no Veintiuno y anï¿½logos)
 		else switch(n)
 		{
 			case 0:
@@ -202,7 +202,7 @@ public class Calculator {
 	public static boolean isLeapYear(String fecha)
 	{
 		if (fecha == null || fecha.length() != 10) return false;
-		// el año es bisiesto si es divisible por 4 o 400, pero no por 100
+		// el aï¿½o es bisiesto si es divisible por 4 o 400, pero no por 100
 		int year = Integer.parseInt(fecha.substring(6, 10));
 		if ((year % 4 != 0 || year % 400 != 0) && year % 100 == 0) return false;
 		else return isValidDate(fecha);
@@ -230,7 +230,7 @@ public class Calculator {
 		// 01 <= YY <= 12
 		if (mes <= 0 || mes > 12) return false;
 		
-		// 01 <= XX <= 31 || 30 || 28 || 29, *según el mes*
+		// 01 <= XX <= 31 || 30 || 28 || 29, *segï¿½n el mes*
 		if (dia <= 0) return false;
 		else switch (mes)
 		{
