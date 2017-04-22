@@ -7,7 +7,6 @@ import java.util.List;
 
 @SuppressWarnings("restriction")
 public class Calculator {
-
 	/*
      * este metodo devuelve el Class del object que le pasamos
      */
@@ -67,7 +66,25 @@ public class Calculator {
 	 * divisores que tiene.
 	 */
 	public static int[] divisors(int n) {
-		throw  new NotImplementedException();
+		
+		if(n==0){
+			return null;
+		}else{
+			int numeros[]=new int[n];
+			int j=0;
+			
+			for(int i=n;i>0;i--)
+				if(n%i==0){
+					numeros[j]=i;
+					j++;
+				}
+			int divisores[]=new int [j];
+			for(int i=0;i<j;i++){
+				divisores[i]=numeros[i];
+			}
+			
+			return divisores;
+		}
 	}
 
 	/*
