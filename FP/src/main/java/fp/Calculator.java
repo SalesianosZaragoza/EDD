@@ -1,7 +1,6 @@
 package fp;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,15 +90,41 @@ public class Calculator {
 	 * Toma como parámetros una cadena de caracteres y devuelve cierto si la cadena resulta ser un palíndromo
 	 */
 	public static boolean checkIsPalindrome(String cadena) {
-		throw  new NotImplementedException();
+		if(cadena==null)
+			return false;
+		else{
+			String original = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ:;-_,.?¿¡!·";
+		    String ascii = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC           ";
+		    String output = cadena.toLowerCase();
+		    String inverOutput="";
+		    
+		    for (int i=0; i<original.length(); i++) {
+		        output = output.replace(original.charAt(i), ascii.charAt(i));
+		    }
+		    output=output.replace(" ", "");
+		    
+		    for(int i=output.length()-1;i>=0;i--)
+		    	inverOutput+=output.charAt(i);
+		    
+		    if(output.equals(inverOutput))
+		    	return true;
+		    else
+		    	return false;
+		}
 	}
-
+					
 	/*
 	 * Pedir un número de 0 a 99 y mostrarlo escrito. Por ejemplo, para 56
 	 * mostrar: cincuenta y seis
 	 */
 	public static String speakToMe(int n) {
-		throw  new NotImplementedException();
+		String resultado;
+		switch (n) {
+		case 11:
+			resultado="once";
+			return resultado;
+		}
+		return null;
 	}
 
 	/*
