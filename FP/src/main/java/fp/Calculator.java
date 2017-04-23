@@ -231,7 +231,23 @@ public class Calculator {
 	 * dd-MM-yyyy
 	 */
 	public static boolean isLeapYear(String fecha) {
-		throw  new NotImplementedException();
+		int año;
+		if(fecha.isEmpty())
+			return false;
+		else{
+			año=Integer.parseInt(fecha.substring(6));
+			
+			if(año%4==0){
+				if(año%100!=0)
+					return true;
+				else
+					if(año%400==0)
+						return true;
+					else 
+						return false;
+			}else
+				return false;
+		}
 	}
 
 	/*
