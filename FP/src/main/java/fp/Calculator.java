@@ -1,11 +1,8 @@
 package fp;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("restriction")
 public class Calculator {
 	/*
      * este metodo devuelve el Class del object que le pasamos
@@ -254,6 +251,39 @@ public class Calculator {
 	 * este metodo devuelve cierto si la fecha es válida
 	 */
 	public static boolean isValidDate(String date) {
-		throw  new NotImplementedException();
+		if(date.length()!=10)
+			return false;
+		else{
+			Integer año,mes,dia;
+			dia=Integer.parseInt(date.substring(0,2));
+			mes=Integer.parseInt(date.substring(3,5));
+			año=Integer.parseInt(date.substring(6));
+
+			if(año!=null && mes<=12 && mes>0 && dia>0 && año>0){
+				if((mes==4 || mes==6 ||mes==7 || mes==9 || mes==11) && dia<=30){
+					return true;
+				}else{
+					if((mes==2 && isLeapYear(date) && dia<=29)||(mes==2 && !(isLeapYear(date)) && dia<=28)){
+						return true;
+					}else{
+						if((mes!=2) && dia<=31)
+							return true;
+						else 
+							return false;
+					}
+				}
+			}else
+				return false;
+		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
