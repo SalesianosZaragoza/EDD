@@ -1,0 +1,14 @@
+.project
+.settings/
+Core/.classpath
+Core/.gitignore
+Core/.project
+Core/.settings/
+FP/.classpath
+FP/.gitignore
+FP/.project
+FP/.settings/
+Junit/.classpath
+Junit/.gitignore
+Junit/.project
+Junit/.settings/
