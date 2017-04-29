@@ -218,6 +218,70 @@ public class Calculator {
 	 * este metodo devuelve cierto si la fecha es válida
 	 */
 	public static boolean isValidDate(String date) {
-		throw new NotImplementedException();
+		boolean valid = true;
+		int cont = 0;
+		int aux = 1;
+		String day = "";
+		String month = "";
+		String year = "";
+		int[] daysInMonth = {31,28,31,30,31,30,31,31,30,31,30,31};
+		int qDay = 0;
+		int qMonth = 0;
+		int qYear = 0;
+
+		boolean thos = true;
+		for (int i = aux + 1; i <= date.length(); i++) {
+			if (date.charAt(i) == '-') {
+				if (cont == 0) {
+					day = date.substring(aux, i-1);
+					try {
+						qDay = Integer.parseInt(day);
+					} catch (NumberFormatException ex) {
+						valid = false;
+						System.out.println("No es una fecha");
+					}
+					aux = i+1;
+					i = aux +1;
+					cont++;
+				}
+				if (cont == 1) {
+					month = date.substring(aux, i-1);
+					try {
+						qMonth = Integer.parseInt(month);
+					} catch (NumberFormatException ex) {
+						valid = false;
+						System.out.println("No es una fecha");
+					}
+					aux = i+1;
+					i = aux +1;
+					cont++;
+				}
+				if (cont == 2) {
+					year = date.substring(aux, i-1);
+					try {
+						qYear = Integer.parseInt(year);
+					} catch (NumberFormatException ex) {
+						valid = false;
+						System.out.println("No es una fecha");
+					}
+				}
+			}
+		}
+		System.out.println(qDay);
+		System.out.println(qMonth);
+		System.out.println(qYear);
+		
+		if(qMonth < 1 || qMonth > 12 || qDay < 1 || qDay > 31){
+			valid = false;
+		}
+		if(qDay > daysInMonth[qMonth] || qDay < daysInMonth[qMonth]){
+			if (((qYear % 4 == 0) && ((qYear % 100 != 0) || (qYear % 400 == 0))) && (qMonth == 2 && qDay == 29)){
+				
+			}else{
+				valid = false;
+			}
+		}
+
+		return valid;
 	}
 }
