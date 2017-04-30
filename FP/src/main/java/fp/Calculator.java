@@ -39,7 +39,7 @@ public class Calculator {
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		
+
 		if (step == 0) {
 			int result[] = { 0 };
 			return result;
@@ -47,12 +47,12 @@ public class Calculator {
 		} else {
 			int result[];
 			if (number % step == 0) {
-				result = new int[(number / step)-1 ];
+				result = new int[(number / step) - 1];
 			} else {
 				result = new int[number / step];
 			}
 			int i = 0;
-			while ((number-step) >0) {
+			while ((number - step) > 0) {
 				number -= step;
 				result[i] = number;
 				i++;
@@ -68,7 +68,23 @@ public class Calculator {
 	 * divisores que tiene.
 	 */
 	public static int[] divisors(int n) {
-		throw new NotImplementedException();
+		if (n == 0)
+			return null;
+		else {
+			int divisores[] = new int[n];
+			int j = 0;
+			for (int i = n; i > 0; i--)
+				if (n % i == 0) {
+					divisores[j] = i;
+					j++;
+				}
+			int result[] = new int[j];
+			for(int x = 0; x<j; x++)
+				result[x] = divisores[x];
+			return result;
+		}
+		
+
 	}
 
 	/*
