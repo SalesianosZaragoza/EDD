@@ -211,7 +211,29 @@ public class Calculator {
 	 * dd-MM-yyyy
 	 */
 	public static boolean isLeapYear(String fecha) {
-		throw new NotImplementedException();
+		int year;
+		boolean leap = false;
+		if(fecha == "" || fecha == null){
+			System.out.println("Error al introducir la fecha");
+		}else{
+			try{
+				year = Integer.parseInt(fecha.substring(6, 10));
+				if(year%4 == 0){
+					if(year%100 != 0){
+						leap = true;
+					}else{
+						if(year%400 == 0){
+							leap = true;
+						}
+					}
+				}
+			} catch (NumberFormatException ex) {
+				System.out.println("No es bisiesto");
+			}
+		}
+		if(leap == true)
+			System.out.println("Es bisiesto");
+		return leap;
 	}
 
 	/*
@@ -219,69 +241,46 @@ public class Calculator {
 	 */
 	public static boolean isValidDate(String date) {
 		boolean valid = true;
-		int cont = 0;
-		int aux = 1;
-		String day = "";
-		String month = "";
-		String year = "";
-		int[] daysInMonth = {31,28,31,30,31,30,31,31,30,31,30,31};
-		int qDay = 0;
-		int qMonth = 0;
-		int qYear = 0;
-
-		boolean thos = true;
-		for (int i = aux + 1; i <= date.length(); i++) {
-			if (date.charAt(i) == '-') {
-				if (cont == 0) {
-					day = date.substring(aux, i-1);
-					try {
-						qDay = Integer.parseInt(day);
-					} catch (NumberFormatException ex) {
-						valid = false;
-						System.out.println("No es una fecha");
-					}
-					aux = i+1;
-					i = aux +1;
-					cont++;
-				}
-				if (cont == 1) {
-					month = date.substring(aux, i-1);
-					try {
-						qMonth = Integer.parseInt(month);
-					} catch (NumberFormatException ex) {
-						valid = false;
-						System.out.println("No es una fecha");
-					}
-					aux = i+1;
-					i = aux +1;
-					cont++;
-				}
-				if (cont == 2) {
-					year = date.substring(aux, i-1);
-					try {
-						qYear = Integer.parseInt(year);
-					} catch (NumberFormatException ex) {
-						valid = false;
-						System.out.println("No es una fecha");
-					}
-				}
-			}
-		}
-		System.out.println(qDay);
-		System.out.println(qMonth);
-		System.out.println(qYear);
+		int day;
+		int month;
+		int year;
 		
-		if(qMonth < 1 || qMonth > 12 || qDay < 1 || qDay > 31){
+		if(date.length() != 10){
 			valid = false;
-		}
-		if(qDay > daysInMonth[qMonth] || qDay < daysInMonth[qMonth]){
-			if (((qYear % 4 == 0) && ((qYear % 100 != 0) || (qYear % 400 == 0))) && (qMonth == 2 && qDay == 29)){
+			System.out.println("No es una fecha");
+		}else{
+			try {
+				day = Integer.parseInt(date.substring(0, 2));
+				month = Integer.parseInt(date.substring(3, 5));
+				year = Integer.parseInt(date.substring(6, 10));
+				System.out.println(day);
+				System.out.println(month);
+				System.out.println(year);
+				if((day >= 1 && day <= 31) && (month >= 1 && month <= 12) && year > 0){
+					if((month == 4 || month == 6 || month == 9 || month == 11) && (day > 30 )){
+						valid = false;
+						System.out.println("¡Esta fecha no existe!");
+					}else{
+						if(month == 2 && day > 28){
+							valid = false;
+							System.out.println("¡Esta fecha no existe!");
+						}else{
+							if(month == 2 && isLeapYear(date) != true){
+								valid = false;
+								System.out.println("¡Esta fecha no existe!");
+							}
+						}
+					}
+				}else{
+					valid = false;
+					System.out.println("¡Esta fecha no existe!");
+				}
 				
-			}else{
+			} catch (NumberFormatException ex) {
 				valid = false;
+				System.out.println("No es una fecha");
 			}
 		}
-
 		return valid;
 	}
 }
