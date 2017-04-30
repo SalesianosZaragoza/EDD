@@ -108,23 +108,32 @@ public class Calculator {
 		if (cadena == null) {
 			return false;
 		} else {
-			String abecedario[] = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P",
-					"Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-			String signosDePuntuacion = "¡!¿?.,;:";
-			String cadenaSinEspacios = "";
+			String acentos = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ";
+			String noAcentos = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC";
+			//Dos cadenas de la misma longitud para sustituir todas las letras con acentos en cadena.
+			String signosDePuntuacion = ":;-_,.?¿¡!·";
 			for (int i = 0; i < cadena.length(); i++) {
-				for (int j = 0; j < signosDePuntuacion.length(); j++) {
-					if (cadena.charAt(i) != ' ' || cadena.charAt(i) != signosDePuntuacion.charAt(j))
-						cadenaSinEspacios += cadena.charAt(i);
+				int pos1 = acentos.indexOf(cadena.charAt(i));
+				if(pos1 != -1){
+					cadena = cadena.replace(acentos.charAt(pos1), noAcentos.charAt(pos1));
+				}else{
+					pos1 = signosDePuntuacion.indexOf(cadena.charAt(i));
+					if(pos1 != -1){
+						cadena = cadena.replace(signosDePuntuacion.charAt(pos1), ' ');
+					}
 				}
 			}
+			cadena = cadena.replace(" ", "");
+			cadena = cadena.toLowerCase();
 			String cadenaInvertida = "";
-			for (int i = cadenaSinEspacios.length(); i >= 1; i--) {
-				cadenaInvertida = cadenaInvertida + cadenaSinEspacios.charAt(i);
+			for (int i = cadena.length()-1; i >= 0; i--) {
+				cadenaInvertida = cadenaInvertida + cadena.charAt(i);
 			}
-			if (cadenaSinEspacios.equalsIgnoreCase(cadenaInvertida)) {
+			System.out.println(cadena);
+			System.out.println(cadenaInvertida);
+			if(cadena.equals(cadenaInvertida)){
 				return true;
-			} else {
+			}else{
 				return false;
 			}
 		}
