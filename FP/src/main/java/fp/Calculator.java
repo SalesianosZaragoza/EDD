@@ -117,4 +117,21 @@ public class Calculator {
 	public static boolean isValidDate(String date) {
 		throw new NotImplementedException();
 	}
+	
+	
+	
+	public class ayuda{
+		public ayuda(int num){
+			
+		}
+		public int speakToMeDecenas(){
+			return 0;
+			
+		}
+		public int speakToMeUnidades(){
+			return 0;
+			
+		}
+	}
 }
+	
