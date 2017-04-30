@@ -58,15 +58,23 @@ public class Calculator {
 			throw new ArithmeticException("not valid");
 		} else {
 			if (step == 0) {
-				int[] ent = { 0 };
-				return ent;
+				int[] enteros = { 0 };
+				return enteros;
 			} else {
-				int division = number / step - 1;
+				int division;
+				if (number % step == 0) {
+					division = (number / step) -1;
+				} else {
+					division = (number / (step));
+				}
 				int[] enteros = new int[division];
 				int aux = number;
-				for (int i = division - 1; i > 0; i--) {
+				for (int i = 0; i < division; i++) {
 					aux = aux - step;
-					enteros[i] = aux;
+					if(aux <= 0){
+					}else{
+						enteros[i] = aux;
+					}
 				}
 				return enteros;
 			}
@@ -253,9 +261,6 @@ public class Calculator {
 				day = Integer.parseInt(date.substring(0, 2));
 				month = Integer.parseInt(date.substring(3, 5));
 				year = Integer.parseInt(date.substring(6, 10));
-				System.out.println(day);
-				System.out.println(month);
-				System.out.println(year);
 				if((day >= 1 && day <= 31) && (month >= 1 && month <= 12) && year > 0){
 					if((month == 4 || month == 6 || month == 9 || month == 11) && (day > 30 )){
 						valid = false;
