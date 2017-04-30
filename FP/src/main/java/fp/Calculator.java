@@ -11,12 +11,7 @@ public class Calculator {
 	 * este metodo devuelve el Class del object que le pasamos
 	 */
 	public static Class classTypeOf(Object x) {
-		if (x != null) {
-			throw new NullPointerException("not valid");
-		} else {
-			Class clase = x.getClass();
-			return clase;
-		}
+		return x.getClass();
 	}
 
 	/*
