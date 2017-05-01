@@ -79,11 +79,10 @@ public class Calculator {
 					j++;
 				}
 			int result[] = new int[j];
-			for(int x = 0; x<j; x++)
+			for (int x = 0; x < j; x++)
 				result[x] = divisores[x];
 			return result;
 		}
-		
 
 	}
 
@@ -100,7 +99,11 @@ public class Calculator {
 	 * mostrar: cincuenta y seis
 	 */
 	public static String speakToMe(int n) {
-		throw new NotImplementedException();
+		String decenas, unidades, result;
+		decenas = Ayuda.speakToMeDecenas(n);
+		unidades = Ayuda.speakToMeUnidades(n);
+		result = decenas + unidades;
+		return result;
 	}
 
 	/*
@@ -117,21 +120,101 @@ public class Calculator {
 	public static boolean isValidDate(String date) {
 		throw new NotImplementedException();
 	}
-	
-	
-	
-	public class ayuda{
-		public ayuda(int num){
-			
+
+	public static class Ayuda {
+		public Ayuda() {
+
 		}
-		public int speakToMeDecenas(){
-			return 0;
-			
+
+		public static String speakToMeDecenas(int num) {
+			if ((num / 10 > 0.9)&&(num%10 != 0)) {
+				switch (num / 10) {
+				case 1:
+					return "Dieci";
+				case 2:
+					return "Veinti ";
+				case 3:
+					return "Treinta y";
+				case 4:
+					return "Cuarenta y ";
+				case 5:
+					return "Cincuenta y ";
+				case 6:
+					return "Sesenta y ";
+				case 7:
+					return "Setenta y ";
+				case 8:
+					return "Ochenta y ";
+				case 9:
+					return "Noventa y ";
+				default:
+					return "";
+				}
+			}
+			return "";
+
 		}
-		public int speakToMeUnidades(){
-			return 0;
-			
+
+		public static String speakToMeUnidades(int num) {
+			switch (num) {
+			case 0:
+				return "Cero";
+			case 10:
+				return "Diez";
+			case 11:
+				return "Once";
+			case 12:
+				return "Doce";
+			case 13:
+				return "Trece";
+			case 14:
+				return "Catorce";
+			case 15:
+				return "Quince";
+			case 20:
+				return "Veinte";
+			case 30:
+				return "Treinta";
+			case 40:
+				return "Cuarenta";
+			case 50:
+				return "Cincuenta";
+			case 60:
+				return "Sesenta";
+			case 70:
+				return "Setenta";
+			case 80:
+				return "Ochenta";
+			case 90:
+				return "Noventa";
+			default:
+				switch (num % 10) {
+				case 0:
+					return "cero";
+				case 1:
+					return "uno";
+				case 2:
+					return "dos";
+				case 3:
+					return "tres";
+				case 4:
+					return "cuatro";
+				case 5:
+					return "cinco";
+				case 6:
+					return "seis";
+				case 7:
+					return "siete";
+				case 8:
+					return "ocho";
+				case 9:
+					return "nueve";
+				default:
+					return "";
+
+				}
+
+			}
 		}
 	}
 }
-	
