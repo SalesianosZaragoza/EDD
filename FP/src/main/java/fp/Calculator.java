@@ -18,8 +18,16 @@ public class Calculator {
 	/*
      * devuelve una lista con los n números de la serie de fibonacci.
      */
-	public static List<Integer> fibonacci(int n) {
-		throw  new NotImplementedException();
+	public static int fibonacci(int n) {
+		if(n>1){
+			return fibonacci(n-1) + fibonacci(n-2);
+		}else if(n==1){
+			return 1;
+		}else if(n==0){
+			return 0;
+		}else
+			System.out.println("Debes ingresar un número igual o mayor a 0.");
+		return -1;
 	}
 
 	/*
