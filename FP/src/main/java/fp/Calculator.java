@@ -111,14 +111,53 @@ public class Calculator {
 	 * dd-MM-yyyy
 	 */
 	public static boolean isLeapYear(String fecha) {
-		throw new NotImplementedException();
+		int año;
+		if (fecha.isEmpty())
+			return false;
+		else {
+			año = Integer.parseInt(fecha.substring(6, 10));
+
+			if (año % 4 == 0) {
+				if (año % 100 != 0)
+					return true;
+				else if (año % 400 == 0)
+					return true;
+				else
+					return false;
+			} else
+				return false;
+		}
 	}
 
 	/*
 	 * este metodo devuelve cierto si la fecha es válida
 	 */
 	public static boolean isValidDate(String date) {
-		throw new NotImplementedException();
+		if (date.length() != 10)
+			return false;
+		else {
+			Integer dia, mes, año;
+			dia = Integer.parseInt(date.substring(0, 2));
+			mes = Integer.parseInt(date.substring(3, 5));
+			año = Integer.parseInt(date.substring(6));
+
+			if (año != null && mes <= 12 && mes > 0 && dia > 0 && año > 0) {
+				if ((mes == 4 || mes == 6 || mes == 7 || mes == 9 || mes == 11) && dia <= 30) {
+					return true;
+				} else {
+					if ((mes == 2 && isLeapYear(date) && dia <= 29) || (mes == 2 && !(isLeapYear(date)) && dia <= 28)) {
+						return true;
+					} else {
+						if ((mes != 2) && dia <= 31)
+							return true;
+						else
+							return false;
+					}
+				}
+			} else
+				return false;
+		}
+
 	}
 
 	public static class Ayuda {
@@ -127,7 +166,7 @@ public class Calculator {
 		}
 
 		public static String speakToMeDecenas(int num) {
-			if ((num / 10 > 0.9)&&(num%10 != 0)) {
+			if ((num / 10 > 0.9) && (num % 10 != 0)) {
 				switch (num / 10) {
 				case 1:
 					return "Dieci";
