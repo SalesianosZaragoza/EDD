@@ -91,7 +91,24 @@ public class Calculator {
 	 * cadena resulta ser un palíndromo
 	 */
 	public static boolean checkIsPalindrome(String cadena) {
-		throw new NotImplementedException();
+		int izquierda = 0;
+		int derecha = cadena.length() - 1;
+		boolean Error = false;
+		if (cadena == null){
+			return false;
+		}
+		else {
+			while ((izquierda < derecha) && (!Error)) {
+
+				if (cadena.charAt(izquierda) == cadena.charAt(derecha)) {
+					izquierda++;
+					derecha--;
+				} else {
+					Error = true;
+				}
+			}
+		}
+		return Error;
 	}
 
 	/*
