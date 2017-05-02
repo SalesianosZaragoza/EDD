@@ -58,21 +58,21 @@ public class CalculatorTest {
 	public void testIsPalindrome() {
 		assertNotNull(checkIsPalindrome(null));
 		assertTrue(
-checkIsPalindrome("No Mara, sometamos o matemos a RamÃ³n."));
+checkIsPalindrome("No Mara, sometamos o matemos a Ramón."));
 		assertTrue(
-checkIsPalindrome("Â¿Acaso hubo bÃºhos acÃ¡?"));
+checkIsPalindrome("¿Acaso hubo búhos acá?"));
 		assertTrue(
-checkIsPalindrome("No lata, no: la totalidad arada dilato talÃ³n a talÃ³n."));
+checkIsPalindrome("No lata, no: la totalidad arada dilato talón a talón."));
 		assertTrue(
-checkIsPalindrome("AllÃ­, tieta MercÃ¨, faci cafÃ¨, crema, te i tilÂ·la"));
+checkIsPalindrome("Allí, tieta Mercè, faci cafè, crema, te i til·la"));
 		assertTrue(
-checkIsPalindrome("No Mara, sometamos o matemos a RamÃ³n."));
+checkIsPalindrome("No Mara, sometamos o matemos a Ramón."));
 		assertFalse(
 				checkIsPalindrome("Buena suerte con los Test"));
 		assertFalse(
-checkIsPalindrome("4Âª ley de kepler: gazpacho y mochilo siempre van con pincho"));
+checkIsPalindrome("4ª ley de kepler: gazpacho y mochilo siempre van con pincho"));
 		assertFalse(
-checkIsPalindrome("No me guardÃ©is rencor, al menos no mucho"));
+checkIsPalindrome("No me guardéis rencor, al menos no mucho"));
 		System.out.println("2P");
 	}
 
