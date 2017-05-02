@@ -34,11 +34,14 @@ public class Calculator {
 
 	public static int[] stepThisNumber(int number, int step){
 		int[] resultado = {};
+		double cont;
 		if(step==0 || number==0){
 			resultado[0]=number;
 			return resultado;
 		}else{
-		int largura = number/step;
+			cont = number/step;
+			int largura = (int)(Math.floor(cont));
+			
 			if(largura==0){
 				for(int i=0; i<largura-1; i++){
 					resultado[i]=number-step;
@@ -94,9 +97,10 @@ public class Calculator {
 
 	public static String speakToMe(int n) {
 		
-		if (n < 0 || n > 99) {
+		if((n<0) || (n>99)){
 			throw new ArithmeticException("No es válido.");
 		}else{
+			
 			String decenas="";
 			String unidades="";
 			String resultado="";
@@ -127,6 +131,38 @@ public class Calculator {
 					resultado="Veinte";
 					break;
 				default:
+					
+					switch (n%10) {
+					case 1:
+						unidades="uno";
+						break;
+					case 2:
+						unidades="dos";
+						break;
+					case 3:
+						unidades="tres";
+						break;
+					case 4:
+						unidades="cuatro";
+						break;
+					case 5:
+						unidades="cinco";
+						break;
+					case 6:
+						unidades="seis";
+						break;
+					case 7:
+						unidades="siete";
+						break;
+					case 8:
+						unidades="ocho";
+						break;
+					case 9:
+						unidades="nueve";
+						break;
+					default:
+						break;
+				}
 			switch (n/10) {
 				case 1:
 					decenas="Dieci";
@@ -154,37 +190,6 @@ public class Calculator {
 					break;
 				case 9:
 					decenas="Noventa";
-					break;
-				default:
-					break;
-			}
-			switch (n%10) {
-				case 1:
-					unidades="uno";
-					break;
-				case 2:
-					unidades="dos";
-					break;
-				case 3:
-					unidades="tres";
-					break;
-				case 4:
-					unidades="cuatro";
-					break;
-				case 5:
-					unidades="cinco";
-					break;
-				case 6:
-					unidades="seis";
-					break;
-				case 7:
-					unidades="siete";
-					break;
-				case 8:
-					unidades="ocho";
-					break;
-				case 9:
-					unidades="nueve";
 					break;
 				default:
 					break;
@@ -219,9 +224,6 @@ public class Calculator {
 		//Paso el String a un String en el que sólo tengamos el año, y pasamos dicho String a Int. Ahí ya consultaremos mediante un If si es bisiesto o no.
 	}
 
-	/*
-	 * este metodo devuelve cierto si la fecha es válida
-	 */
 	public static boolean isValidDate(String date) {
 		
 		String sMascara = null;
@@ -237,8 +239,6 @@ public class Calculator {
             cal.setTime(dInstancia); //setear la fecha en cuestion al calendario
             return true;
         } catch (java.text.ParseException excep) {
-            return false;
-        } catch (Exception excep) {
             return false;
         }finally{
             return true;
