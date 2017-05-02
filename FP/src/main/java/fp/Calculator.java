@@ -33,25 +33,29 @@ public class Calculator {
 	}
 
 	public static int[] stepThisNumber(int number, int step){
-		int[] resultado = {};
 		double cont;
-		if(step==0 || number==0){
-			resultado[0]=number;
-			return resultado;
+		if(step<0){
+			throw new ArithmeticException("No es válido.");
 		}else{
-			cont = number/step;
-			int largura = (int)(Math.floor(cont));
-			
-			if(largura==0){
-				for(int i=0; i<largura-1; i++){
-					resultado[i]=number-step;
-				}
+			if(step==0 || number==0){
+				int[] resultado={0};
+				return resultado;
 			}else{
-				for(int i=0; i<largura; i++){
-					resultado[i]=number-step;
+				int[] resultado = {0};
+				cont = number/step;
+				int largura = (int)(Math.floor(cont));
+				
+				if(number%step==0){
+					for(int i=0; i<largura-1; i++){
+						resultado[i]=number-step;
+					}
+				}else{
+					for(int i=0; i<largura; i++){
+						resultado[i]=number-step;
+					}
 				}
+			return resultado;
 			}
-		return resultado;
 		}
 		//Me he asegurado de que el salto no es de 0 porque no avanzaría, y, cuando he hecho eso, he calculado el tamaño del vector y he ido restando el salto al número.
 	}
