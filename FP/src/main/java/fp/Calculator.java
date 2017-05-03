@@ -1,7 +1,5 @@
 package fp;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.text.ParseException;
 import java.util.*;
 
@@ -89,36 +87,41 @@ public class Calculator {
 	}
 
 	public static boolean checkIsPalindrome(String cadena) {
+		boolean Correcto = false;
 		if(cadena==null)
 			return false;
 		else{
-			boolean Error = false;
 			
-			String original = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ:;-_,.?¿¡!·";
-		    String ascii = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC           ";
+			int inicio = 0;
+			
+			String original = ",.áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ:;-_?¿¡!·";
+		    String ascii = "  aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC         ";
 		    String output = cadena.toLowerCase();
-		    
-		    int inicio = 0;
-			int fin = output.length()-1;
 		    
 		    for (int i=0; i<original.length(); i++) {
 		        output = output.replace(original.charAt(i), ascii.charAt(i));
 		    }
+		    
 		    output=output.replace(" ", "");
 		    
+			int fin = output.length()-1;
+			
 			if(output==null)
 				return false;
 			else{
-				while ((inicio<fin) || (inicio==fin) || (!Error)){
+				while (inicio<=fin){
 					if (output.charAt(inicio)==output.charAt(fin)){				
 						inicio++;
 						fin--;
+						Correcto = true;
 					}else{
-						Error = true;
+						Correcto = false;
+						inicio=10;
+						fin=1;
 					}
 				}
+				return Correcto;
 			}
-			return Error;
 		}
 		//He declarado dos variables de inicio y fin. Después he ido recorriendo el String viendo si eran iguales los carácteres.
 	}
@@ -278,9 +281,9 @@ public class Calculator {
 							return false;
 					}
 				}
-			} else
+			}else
 				return false;
 		}
-		//
+		//Primero he estrablecido que la fecha ocupa 10 carácteres, sino es incorrecto. He separado la fecha en tres enteros y he establecido los meses que tiene 31, 30, 29 y 28 días aplicando el método del año bisiesto.
 	}
 }
