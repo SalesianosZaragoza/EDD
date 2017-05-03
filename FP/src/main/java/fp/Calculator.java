@@ -92,21 +92,19 @@ public class Calculator {
 		int inicio = 0;
 		int fin = cadena.length()-1;
 		boolean Error = false;
-		
-		while ((inicio<fin) || (inicio==fin)){
-			 
-			if (cadena.charAt(inicio)==cadena.charAt(fin)){				
-				inicio++;
-				fin--;
-			} else {
-				Error = true;
+		if(cadena==null)
+			return false;
+		else{
+			while ((inicio<fin) || (!Error)){
+				if (cadena.charAt(inicio)==cadena.charAt(fin)){				
+					inicio++;
+					fin--;
+				}else{
+					Error = true;
+				}
 			}
 		}
-		
-		if (!Error)
-			return true;
-		else
-			return false;
+		return Error;
 		//He declarado dos variables de inicio y fin. Después he ido recorriendo el String viendo si eran iguales los carácteres.
 	}
 
@@ -244,25 +242,30 @@ public class Calculator {
 
 	public static boolean isValidDate(String date) {
 		
-		String sMascara = null;
-		
-		if(date!=null){
-        try {
-            java.util.Locale locInstancia = new java.util.Locale("es","CL");
-            java.text.DateFormat dfInstancia;
-            java.util.Date dInstancia;
-            dfInstancia = new java.text.SimpleDateFormat(sMascara,locInstancia);
-            dInstancia = (java.util.Date)dfInstancia.parse(date);
-            java.util.Calendar cal = java.util.Calendar.getInstance(locInstancia);
-            cal.setTime(dInstancia); //setear la fecha en cuestion al calendario
-            return true;
-        } catch (java.text.ParseException excep) {
-            return false;
-        }finally{
-            return true;
-        }
-		}
-		else
+		if (date.length() != 10)
 			return false;
+		else {
+			Integer año, mes, dia;
+			dia = Integer.parseInt(date.substring(0, 2));
+			mes = Integer.parseInt(date.substring(3, 5));
+			año = Integer.parseInt(date.substring(6));
+
+			if (año != null && mes <= 12 && mes > 0 && dia > 0 && año > 0) {
+				if ((mes == 4 || mes == 6 || mes == 7 || mes == 9 || mes == 11) && dia <= 30) {
+					return true;
+				} else {
+					if ((mes == 2 && isLeapYear(date) && dia <= 29) || (mes == 2 && !(isLeapYear(date)) && dia <= 28)) {
+						return true;
+					} else {
+						if ((mes != 2) && dia <= 31)
+							return true;
+						else
+							return false;
+					}
+				}
+			} else
+				return false;
+		}
+		//
 	}
 }
