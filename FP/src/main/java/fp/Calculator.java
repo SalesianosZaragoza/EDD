@@ -9,7 +9,7 @@ public class Calculator {
 
 	public static Class classTypeOf(Object x){
 		return x.getClass(); 
-		//He utilizado el m�todo getClass que devuelve la clase del objeto indicado.
+		//He utilizado el método getClass que devuelve la clase del objeto indicado.
 	}
 
 	public static List<Integer> fibonacci(int n){
@@ -35,7 +35,7 @@ public class Calculator {
 	public static int[] stepThisNumber(int number, int step){
 		double cont;
 		if(step<0){
-			throw new ArithmeticException("No es v�lido.");
+			throw new ArithmeticException("No es válido.");
 		}else{
 			if(step==0 || number==0){
 				int[] resultado=new int[0];
@@ -64,7 +64,7 @@ public class Calculator {
 			return solucion;
 			}
 		}
-		//Me he asegurado de que el salto no es de 0 porque no avanzar�a, y, cuando he hecho eso, he calculado el tama�o del vector y he ido restando el salto al n�mero.
+		//Me he asegurado de que el salto no es de 0 porque no avanzaría, y, cuando he hecho eso, he calculado el tamaño del vector y he ido restando el salto al número.
 	}
 
 	public static int[] divisors(int n) {
@@ -85,33 +85,48 @@ public class Calculator {
 			}
 			return solucion;
 		}
-		//Me he asegurado de que el n�mero estaba entre 0 y 20. Una vez hecho esto, he declarado una largura para el vector, y un vector. A partir de ah�, cada vez que divid�a el n�mero por ese mismo n�mero o el resto era cero, la largura se ampliaba y se a�ad�a ese divisor al vector.
+		//Me he asegurado de que el número estaba entre 0 y 20. Una vez hecho esto, he declarado una largura para el vector, y un vector. A partir de ahí, cada vez que dividía el número por ese mismo número o el resto era cero, la largura se ampliaba y se añadía ese divisor al vector.
 	}
 
 	public static boolean checkIsPalindrome(String cadena) {
-		int inicio = 0;
-		int fin = cadena.length()-1;
-		boolean Error = false;
 		if(cadena==null)
 			return false;
 		else{
-			while ((inicio<fin) || (!Error)){
-				if (cadena.charAt(inicio)==cadena.charAt(fin)){				
-					inicio++;
-					fin--;
-				}else{
-					Error = true;
+			boolean Error = false;
+			
+			String original = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ:;-_,.?¿¡!·";
+		    String ascii = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC           ";
+		    String output = cadena.toLowerCase();
+		    
+		    int inicio = 0;
+			int fin = output.length()-1;
+		    
+		    for (int i=0; i<original.length(); i++) {
+		        output = output.replace(original.charAt(i), ascii.charAt(i));
+		    }
+		    output=output.replace(" ", "");
+		    
+			if(output==null)
+				return false;
+			else{
+				while ((inicio<fin) || (inicio==fin) || (!Error)){
+					if (output.charAt(inicio)==output.charAt(fin)){				
+						inicio++;
+						fin--;
+					}else{
+						Error = true;
+					}
 				}
 			}
+			return Error;
 		}
-		return Error;
-		//He declarado dos variables de inicio y fin. Despu�s he ido recorriendo el String viendo si eran iguales los car�cteres.
+		//He declarado dos variables de inicio y fin. Después he ido recorriendo el String viendo si eran iguales los carácteres.
 	}
 
 	public static String speakToMe(int n) {
 		
 		if((n<0) || (n>99)){
-			throw new ArithmeticException("No es v�lido.");
+			throw new ArithmeticException("No es válido.");
 		}else{
 			
 			String decenas="";
@@ -220,7 +235,7 @@ public class Calculator {
 			}	
 			return resultado;
 		}
-		//He consultado primero seg�n el n�mero para casos especiales, luego seg�n las decenas para la primera parte del texto, y a continuaci�n seg�n las unidades para la �ltima parte del texto. Al final le he preguntado por el n�mero, para ver si tengo que a�adir decenas o unidades al texto.
+		//He consultado primero según el número para casos especiales, luego según las decenas para la primera parte del texto, y a continuación según las unidades para la última parte del texto. Al final le he preguntado por el número, para ver si tengo que añadir decenas o unidades al texto.
 	}
 
 	public static boolean isLeapYear(String fecha) {
@@ -237,7 +252,7 @@ public class Calculator {
 		else
 			return false;
 		}
-		//Paso el String a un String en el que s�lo tengamos el a�o, y pasamos dicho String a Int. Ah� ya consultaremos mediante un If si es bisiesto o no.
+		//Paso el String a un String en el que sólo tengamos el año, y pasamos dicho String a Int. Ahí ya consultaremos mediante un If si es bisiesto o no.
 	}
 
 	public static boolean isValidDate(String date) {
