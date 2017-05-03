@@ -11,7 +11,7 @@ public class Calculator {
      * este metodo devuelve el Class del object que le pasamos
      */
 	public static Class classTypeOf(Object x) {
-		throw  new NotImplementedException();
+	
 	}
 
 
@@ -19,14 +19,14 @@ public class Calculator {
      * devuelve una lista con los n números de la serie de fibonacci.
      */
 	public static List<Integer> fibonacci(int n) {
-		throw  new NotImplementedException();
+		
 	}
 
 	/*
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		throw  new NotImplementedException();
+	
 		}
 
 	/*
@@ -34,7 +34,7 @@ public class Calculator {
 	 * divisores que tiene.
 	 */
 	public static int[] divisors(int n) {
-		throw  new NotImplementedException();
+		
 	}
 
 	/*
