@@ -38,7 +38,7 @@ public class Calculator {
 			throw new ArithmeticException("No es válido.");
 		}else{
 			if(step==0 || number==0){
-				int[] resultado={0};
+				int[] resultado={number};
 				return resultado;
 			}else{
 				int[] resultado = {0};
@@ -65,14 +65,18 @@ public class Calculator {
 			return null;
 		}else{
 			int largura = 0;
-			int resultado[] = {};
+			int resultado[] = new int [n];
 			for(int i=n; i>=1; i--){
 				if(n%i==0 || n==i){
 					resultado[largura]=i;
 					largura++;
 				}
 			}
-			return resultado;
+			int solucion[] = new int [largura];
+			for(int i=0; i<largura; i++){
+				solucion[i]=resultado[i];
+			}
+			return solucion;
 		}
 		//Me he asegurado de que el número estaba entre 0 y 20. Una vez hecho esto, he declarado una largura para el vector, y un vector. A partir de ahí, cada vez que dividía el número por ese mismo número o el resto era cero, la largura se ampliaba y se añadía ese divisor al vector.
 	}
@@ -166,39 +170,39 @@ public class Calculator {
 						break;
 					default:
 						break;
-				}
-			switch (n/10) {
-				case 1:
-					decenas="Dieci";
-					break;
-				case 2:
-					decenas="Veinti";
-					break;
-				case 3:
-					decenas="Treinta";
-					break;
-				case 4:
-					decenas="Cuarenta";
-					break;
-				case 5:
-					decenas="Cincuenta";
-					break;
-				case 6:
-					decenas="Sesenta";
-					break;
-				case 7:
-					decenas="Setenta";
-					break;
-				case 8:
-					decenas="Ochenta";
-					break;
-				case 9:
-					decenas="Noventa";
-					break;
-				default:
-					break;
-			}
-			break;
+					}
+					switch (n/10) {
+						case 1:
+							decenas="Dieci";
+							break;
+						case 2:
+							decenas="Veinti";
+							break;
+						case 3:
+							decenas="Treinta";
+							break;
+						case 4:
+							decenas="Cuarenta";
+							break;
+						case 5:
+							decenas="Cincuenta";
+							break;
+						case 6:
+							decenas="Sesenta";
+							break;
+						case 7:
+							decenas="Setenta";
+							break;
+						case 8:
+							decenas="Ochenta";
+							break;
+						case 9:
+							decenas="Noventa";
+							break;
+						default:
+							break;
+						}
+				break;
 			}
 			
 			if(n/10>=1){
@@ -216,15 +220,18 @@ public class Calculator {
 
 	public static boolean isLeapYear(String fecha) {
 		
+		if(fecha.isEmpty())
+			return false;
+		else{
 		String año=fecha;
-        //Borramos los primeros cinco caracteres.
         año = fecha.substring(6);
 		int numEntero = Integer.parseInt(año);
 
-		if ((numEntero % 4 == 0) && ((numEntero % 100 != 0) || (numEntero % 400 == 0)))
+		if ((numEntero%4 == 0) && ((numEntero%100 != 0) || (numEntero%400 == 0)))
 			return true;
 		else
 			return false;
+		}
 		//Paso el String a un String en el que sólo tengamos el año, y pasamos dicho String a Int. Ahí ya consultaremos mediante un If si es bisiesto o no.
 	}
 
