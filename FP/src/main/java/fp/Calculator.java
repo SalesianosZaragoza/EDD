@@ -9,7 +9,7 @@ public class Calculator {
 
 	public static Class classTypeOf(Object x){
 		return x.getClass(); 
-		//He utilizado el método getClass que devuelve la clase del objeto indicado.
+		//He utilizado el mï¿½todo getClass que devuelve la clase del objeto indicado.
 	}
 
 	public static List<Integer> fibonacci(int n){
@@ -35,7 +35,7 @@ public class Calculator {
 	public static int[] stepThisNumber(int number, int step){
 		double cont;
 		if(step<0){
-			throw new ArithmeticException("No es válido.");
+			throw new ArithmeticException("No es vï¿½lido.");
 		}else{
 			if(step==0 || number==0){
 				int[] resultado=new int[0];
@@ -64,7 +64,7 @@ public class Calculator {
 			return solucion;
 			}
 		}
-		//Me he asegurado de que el salto no es de 0 porque no avanzaría, y, cuando he hecho eso, he calculado el tamaño del vector y he ido restando el salto al número.
+		//Me he asegurado de que el salto no es de 0 porque no avanzarï¿½a, y, cuando he hecho eso, he calculado el tamaï¿½o del vector y he ido restando el salto al nï¿½mero.
 	}
 
 	public static int[] divisors(int n) {
@@ -85,7 +85,7 @@ public class Calculator {
 			}
 			return solucion;
 		}
-		//Me he asegurado de que el número estaba entre 0 y 20. Una vez hecho esto, he declarado una largura para el vector, y un vector. A partir de ahí, cada vez que dividía el número por ese mismo número o el resto era cero, la largura se ampliaba y se añadía ese divisor al vector.
+		//Me he asegurado de que el nï¿½mero estaba entre 0 y 20. Una vez hecho esto, he declarado una largura para el vector, y un vector. A partir de ahï¿½, cada vez que dividï¿½a el nï¿½mero por ese mismo nï¿½mero o el resto era cero, la largura se ampliaba y se aï¿½adï¿½a ese divisor al vector.
 	}
 
 	public static boolean checkIsPalindrome(String cadena) {
@@ -105,13 +105,13 @@ public class Calculator {
 			}
 		}
 		return Error;
-		//He declarado dos variables de inicio y fin. Después he ido recorriendo el String viendo si eran iguales los carácteres.
+		//He declarado dos variables de inicio y fin. Despuï¿½s he ido recorriendo el String viendo si eran iguales los carï¿½cteres.
 	}
 
 	public static String speakToMe(int n) {
 		
 		if((n<0) || (n>99)){
-			throw new ArithmeticException("No es válido.");
+			throw new ArithmeticException("No es vï¿½lido.");
 		}else{
 			
 			String decenas="";
@@ -220,7 +220,7 @@ public class Calculator {
 			}	
 			return resultado;
 		}
-		//He consultado primero según el número para casos especiales, luego según las decenas para la primera parte del texto, y a continuación según las unidades para la última parte del texto. Al final le he preguntado por el número, para ver si tengo que añadir decenas o unidades al texto.
+		//He consultado primero segï¿½n el nï¿½mero para casos especiales, luego segï¿½n las decenas para la primera parte del texto, y a continuaciï¿½n segï¿½n las unidades para la ï¿½ltima parte del texto. Al final le he preguntado por el nï¿½mero, para ver si tengo que aï¿½adir decenas o unidades al texto.
 	}
 
 	public static boolean isLeapYear(String fecha) {
@@ -228,16 +228,16 @@ public class Calculator {
 		if(fecha.isEmpty())
 			return false;
 		else{
-		String año=fecha;
-        año = fecha.substring(6);
-		int numEntero = Integer.parseInt(año);
+		String aÃ±o=fecha;
+        aÃ±o = fecha.substring(6);
+		int numEntero = Integer.parseInt(aÃ±o);
 
 		if ((numEntero%4 == 0) && ((numEntero%100 != 0) || (numEntero%400 == 0)))
 			return true;
 		else
 			return false;
 		}
-		//Paso el String a un String en el que sólo tengamos el año, y pasamos dicho String a Int. Ahí ya consultaremos mediante un If si es bisiesto o no.
+		//Paso el String a un String en el que sï¿½lo tengamos el aï¿½o, y pasamos dicho String a Int. Ahï¿½ ya consultaremos mediante un If si es bisiesto o no.
 	}
 
 	public static boolean isValidDate(String date) {
@@ -245,12 +245,12 @@ public class Calculator {
 		if (date.length() != 10)
 			return false;
 		else {
-			Integer año, mes, dia;
+			Integer aÃ±o, mes, dia;
 			dia = Integer.parseInt(date.substring(0, 2));
 			mes = Integer.parseInt(date.substring(3, 5));
-			año = Integer.parseInt(date.substring(6));
+			aÃ±o = Integer.parseInt(date.substring(6));
 
-			if (año != null && mes <= 12 && mes > 0 && dia > 0 && año > 0) {
+			if (aÃ±o != null && mes <= 12 && mes > 0 && dia > 0 && aÃ±o > 0) {
 				if ((mes == 4 || mes == 6 || mes == 7 || mes == 9 || mes == 11) && dia <= 30) {
 					return true;
 				} else {
