@@ -12,7 +12,7 @@
        * este metodo devuelve el Class del object que le pasamos
        */
  public static Class classTypeOf(Object x) {
- 		throw  new NotImplementedException();
+ 		
  	public static Class<? extends Object> classTypeOf(Object x) {
  		return x.getClass();
   	}
@@ -22,7 +22,7 @@
        * devuelve una lista con los n números de la serie de fibonacci.
        */
   	public static List<Integer> fibonacci(int n) {
- 		throw  new NotImplementedException();
+ 		
  		List<Integer>lista=new ArrayList<Integer>();
  		Integer x=0,y=1;
  		Integer resultado;
@@ -40,7 +40,7 @@
   	 * Escribir todos los números del number al 0 de step en step.
   	 */
   	public static int[] stepThisNumber(int number, int step) {
- 	throw  new NotImplementedException();
+ 	
  	
  		if(step==0){//para que no de nulo
  		int numeros[]={0};
@@ -70,7 +70,7 @@
   	 * divisores que tiene.
   	 */
   	public static int[] divisors(int n) {
- 		throw  new NotImplementedException();
+ 	
  		
  		if(n==0){
  			return null;
@@ -96,7 +96,7 @@
   	 * Toma como parámetros una cadena de caracteres y devuelve cierto si la cadena resulta ser un palíndromo
   	 */
   	public static boolean checkIsPalindrome(String cadena) {
- 		throw  new NotImplementedException();
+ 	
  			if(cadena==null)
  				return false;
  		else{
@@ -126,7 +126,7 @@
   	 * mostrar: cincuenta y seis
   	 */
   	public static String speakToMe(int n) {
- 		throw  new NotImplementedException();
+
  		String primer_numero="";
  		String Segundo_numero="";
  		String resultado="";
@@ -239,54 +239,53 @@
   	 * dd-MM-yyyy
   	 */
   	public static boolean isLeapYear(String fecha) {
- -		throw  new NotImplementedException();
- +		int año;
- +		if(fecha.isEmpty())
- +			return false;
- +		else{
- +			año=Integer.parseInt(fecha.substring(6));
- +			
- +			if(año%4==0){
- +				if(año%100!=0)
- +					return true;
- +				else
- +					if(año%400==0)
- +						return true;
- +					else 
- +						return false;
- +			}else
- +				return false;
- +		}
+ 		int año;
+ 		if(fecha.isEmpty())
+ 			return false;
+ 		else{
+ 			año=Integer.parseInt(fecha.substring(6));
+ 			
+			if(año%4==0){
+				if(año%100!=0)
+					return true;
+				 else
+					if(año%400==0)
+ 						return true;
+					else 
+ 						return false;
+ 			}else
+ 				return false;
+ 		}
   	}
   
   	/*
   	 * este metodo devuelve cierto si la fecha es válida
   	 */
   	public static boolean isValidDate(String date) {
- -		throw  new NotImplementedException();
- +		if(date.length()!=10)
- +			return false;
- +		else{
- +			Integer año,mes,dia;
- +			dia=Integer.parseInt(date.substring(0,2));
- +			mes=Integer.parseInt(date.substring(3,5));
- +			año=Integer.parseInt(date.substring(6));
- +
- +			if(año!=null && mes<=12 && mes>0 && dia>0 && año>0){
- +				if((mes==4 || mes==6 ||mes==7 || mes==9 || mes==11) && dia<=30){
- +					return true;
- +				}else{
- +					if((mes==2 && isLeapYear(date) && dia<=29)||(mes==2 && !(isLeapYear(date)) && dia<=28)){
- +						return true;
- +					}else{
- +						if((mes!=2) && dia<=31)
- +							return true;
- +						else 
- +							return false;
- +					}
- +				}
- +			}else
- +				return false;
- +		}
+ 
+ 		if(date.length()!=10)
+	 	return false;
+ 		else{
+ 			Integer año,mes,dia;
+ 			dia=Integer.parseInt(date.substring(0,2));
+ 			mes=Integer.parseInt(date.substring(3,5));
+ 			año=Integer.parseInt(date.substring(6));
+ 
+ 			if(año!=null && mes<=12 && mes>0 && dia>0 && año>0){
+ 				if((mes==4 || mes==6 ||mes==7 || mes==9 || mes==11) && dia<=30){
+ 					return true;
+ 				}else{
+ 					if((mes==2 && isLeapYear(date) && dia<=29)||(mes==2 && !(isLeapYear(date)) && dia<=28)){
+ 						return true;
+ 					}else{
+ 					if((mes!=2) && dia<=31)
+ 							return true;
+ 						else 
+ 							return false;
+ 					}
+ 				}
+ 			}else
+ 				return false;
+ 		}
   	}
   }
