@@ -5,7 +5,7 @@ public class Factorial {
 
 	public static void main(String[] args) {
 		double resultado = factorialRecursivo(20);
-		System.out.println("Mi factorial es "+resultado);
+		System.out.println("Mi factorial es "+resultado) ;
 	}
 	
 	// Método Java no recursivo para calcular el factorial de un número
