@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1493883044771_0" label="edd-parent" name="edd-parent">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Core" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/FP" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Junit" type="4"/>
+</workingSet>
+</workingSetManager>
