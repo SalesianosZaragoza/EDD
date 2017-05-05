@@ -29,7 +29,6 @@ public class Calculator {
             aux = n1;
             n1 = n2;
             n2 = aux + n1;
- 
             numeros.add(n2);
         }
          return numeros;
@@ -38,18 +37,53 @@ public class Calculator {
 	}
 
 	/*
-	 * Escribir todos los números del number al 0 de step en step.
+	 * Escribir todos los numeros del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		throw  new NotImplementedException();
+		int n = number-step;
+		int d = number-step;
+		int contador=0;
+		while (d>0) {
+			contador++;
+			d=d-step;
 		}
+		
+		int numbers[] = new int[contador];
+		if(number == 0 && step == 0){
+			return numbers;
+		}else{
+			int i = 0;
+			for (int j = 0; j < numbers.length; j++) {
+				numbers[j] = n;
+				n=n-step;
+			}
+			return numbers;
+		}
+	}
 
 	/*
 	 * Módulo al que se le pasa un número entero del 0 al 20 y devuelve los
 	 * divisores que tiene.
 	 */
 	public static int[] divisors(int n) {
-		throw  new NotImplementedException();
+		if(n == 0)
+			return null;
+		else{
+			int j = 0;
+			int contador = 0;
+			for (int i = 1; i <= n ; i++)
+	            if (n % i == 0)
+	                contador ++;
+	            
+			int divisors[] = new int[contador];
+			for (int i = n; i >= 1 ; i--)
+	            if (n % i == 0){
+	                divisors[j] = i;
+	                j++;
+	            }
+	        
+			return divisors;
+		}
 	}
 
 	/*
