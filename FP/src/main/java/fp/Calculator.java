@@ -67,14 +67,50 @@ public class Calculator {
 	 * divisores que tiene.
 	 */
 	public static int[] divisors(int n) {
-		throw  new NotImplementedException();
+		if (n == 0) {
+			return null;
+		} else {
+			int numeros[] = new int[n];
+			int j = 0;
+
+			for (int i = n; i > 0; i--)
+				if (n % i == 0) {
+					numeros[j] = i;
+					j++;
+				}
+
+			int divisores[] = new int[j];
+			for (int i = 0; i < j; i++) {
+				divisores[i] = numeros[i];
+
+			}
+			return divisores;
+		}
 	}
 
 	/*
 	 * Toma como parÃ¡metros una cadena de caracteres y devuelve cierto si la cadena resulta ser un palÃ­ndromo
 	 */
 	public static boolean checkIsPalindrome(String cadena) {
-		throw  new NotImplementedException();
+		if (cadena == null)
+			return false;
+		else {
+			String original = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ:;-_,.?¿¡!·";
+			String ascii = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC           ";
+			String output = cadena.toLowerCase();
+			String inverOutput = "";
+
+			for (int i = 0; i < original.length(); i++) {
+				output = output.replace(original.charAt(i), ascii.charAt(i));
+			}
+			output = output.replace(" ", "");
+			for (int i = output.length() - 1; i >= 0; i--)
+				inverOutput += output.charAt(i);
+			if (output.equals(inverOutput))
+				return true;
+			else
+				return false;
+		}
 	}
 
 	/*
