@@ -99,22 +99,6 @@ checkIsPalindrome("No me guardéis rencor, al menos no mucho"));
 		System.out.println("1P");
 	}
 
-	@Test
-	public void testIsValidDate() {
-		assertNotNull(isValidDate(""));
-		assertTrue(isValidDate("01-01-0001"));
-		assertTrue(isValidDate("31-12-2015"));
-		assertFalse(isValidDate(""));
-		assertFalse(isValidDate("asdasd"));
-		assertFalse(isValidDate("21-12"));
-		assertFalse(isValidDate("12-2000"));
-		assertFalse(isValidDate("00-12-2000"));
-		assertFalse(isValidDate("32-12-2000"));
-		assertFalse(isValidDate("31-13-2000"));
-		assertFalse(isValidDate("01-00-2000"));
-		assertFalse(isValidDate("01-01-0000"));
-		System.out.println("1P");
-	}
 
 
 	@Test
