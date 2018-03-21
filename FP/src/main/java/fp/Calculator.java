@@ -41,17 +41,17 @@ public class Calculator {
 	 * resulta ser un palíndromo
 	 */
 	public static boolean checkIsPalindrome(String cadena) {
-		String vocalesASustituir[] = { "[àá]", "[éè]", "í", "[óò]", "[úü]" };
-		String vocalesSustitutas[] = { "a", "e", "i", "o", "u" };
+		String caracteresASustituir[] = { "[àá]", "[éè]", "í", "[óò]", "[úü]" };
+		String caracteresSustitutos[] = { "a", "e", "i", "o", "u" };
 		if (cadena == null)
 			return false;
 		else {
-			for (int i = 0; i < vocalesSustitutas.length; i++)
-				cadena = cadena.replaceAll(vocalesASustituir[i], vocalesSustitutas[i]);
+			for (int i = 0; i < caracteresSustitutos.length; i++)
+				cadena = cadena.replaceAll(caracteresASustituir[i], caracteresSustitutos[i]);
 			cadena = cadena.toLowerCase().replaceAll("\\W", "");
-			int n = cadena.length();
-			for (int i = 0; i < (n / 2); i++) {
-				if (cadena.charAt(i) != cadena.charAt(n - i - 1)) {
+			int numeroCaracteres = cadena.length();
+			for (int i = 0; i < (numeroCaracteres / 2); i++) {
+				if (cadena.charAt(i) != cadena.charAt(numeroCaracteres - i - 1)) {
 					return false;
 				}
 			}
