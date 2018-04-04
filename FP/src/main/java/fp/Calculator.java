@@ -4,6 +4,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Calculator {
 
@@ -72,13 +73,33 @@ public class Calculator {
 	 * dd-MM-yyyy
 	 */
 	public static boolean isLeapYear(String fecha) {
-		throw new NotImplementedException();
+		if (fecha != "" && fecha != null) {
+			String anyo = fecha.substring(fecha.length() - 4);
+			int anyoInt = Integer.parseInt(anyo);
+			boolean bisiesto = anyoInt % 4 == 0 && anyoInt % 100 != 0 || anyoInt % 400 == 0;
+			if (bisiesto)
+				return true;
+		}
+		return false;
 	}
 
 	/*
 	 * este metodo devuelve cierto si la fecha es válida
 	 */
 	public static boolean isValidDate(String date) {
-		throw new NotImplementedException();
+		String anyo, mes, dia;
+		int anyoInt, mesInt, diaInt;
+		String patron = "\\d{2}" + "-" + "\\d{2}" + "-" + "\\d{4}";
+		if (date.matches(patron)) {
+			anyo = date.substring(date.length() - 4);
+			mes = date.substring(3, 5);
+			dia = date.substring(0, 2);
+			anyoInt = Integer.parseInt(anyo);
+			mesInt = Integer.parseInt(mes);
+			diaInt = Integer.parseInt(dia);
+			if (anyoInt >= 1 && mesInt >= 1 && mesInt < 13 && diaInt >= 1 && diaInt < 32)
+				return true;
+		}
+		return false;
 	}
 }
