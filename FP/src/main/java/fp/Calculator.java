@@ -38,7 +38,17 @@ public class Calculator {
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		throw new NotImplementedException();
+		int numeros[] = null;
+		if (step != 0) {
+			List<Integer> listaNumeros = new ArrayList<Integer>();
+			for (int i = 1; i <= number / step; i++)
+				if (number - step * i > 0)
+					listaNumeros.add(number - step * i);
+			numeros = new int[listaNumeros.size()];
+			for (int i = 0; i < listaNumeros.size(); i++)
+				numeros[i] = listaNumeros.get(i);
+		}
+		return numeros;
 	}
 
 	/*
@@ -48,16 +58,14 @@ public class Calculator {
 	public static int[] divisors(int n) {
 		int[] divisores = null;
 		if (n > 0) {
-			int cantidadDivisores = 0;
-			List<Integer> lista = new ArrayList<Integer>();
+			List<Integer> listaDivisores = new ArrayList<Integer>();
 			for (int i = n; i > 0; i--)
 				if (n % i == 0) {
-					cantidadDivisores++;
-					lista.add(i);
+					listaDivisores.add(i);
 				}
-			divisores = new int[cantidadDivisores];
-			for (int i = 0; i < cantidadDivisores; i++)
-				divisores[i] = lista.get(i);
+			divisores = new int[listaDivisores.size()];
+			for (int i = 0; i < listaDivisores.size(); i++)
+				divisores[i] = listaDivisores.get(i);
 		}
 		return divisores;
 	}
@@ -67,22 +75,21 @@ public class Calculator {
 	 * resulta ser un palíndromo
 	 */
 	public static boolean checkIsPalindrome(String cadena) {
+		boolean palindromo = true;
 		String caracteresASustituir[] = { "[àá]", "[éè]", "[íï]", "[óò]", "[úü]" };
 		String caracteresSustitutos[] = { "a", "e", "i", "o", "u" };
 		if (cadena == null)
-			return false;
+			palindromo = false;
 		else {
 			for (int i = 0; i < caracteresSustitutos.length; i++)
 				cadena = cadena.replaceAll(caracteresASustituir[i], caracteresSustitutos[i]);
 			cadena = cadena.toLowerCase().replaceAll("\\W", "");
 			int numeroCaracteres = cadena.length();
-			for (int i = 0; i < (numeroCaracteres / 2); i++) {
-				if (cadena.charAt(i) != cadena.charAt(numeroCaracteres - i - 1)) {
-					return false;
-				}
-			}
-			return true;
+			for (int i = 0; i < (numeroCaracteres / 2); i++)
+				if (cadena.charAt(i) != cadena.charAt(numeroCaracteres - i - 1))
+					palindromo = false;
 		}
+		return palindromo;
 	}
 
 	/*
@@ -107,6 +114,8 @@ public class Calculator {
 		default:
 			if (unidad == 0)
 				cadena += decenas[decena - 2];
+			else if (decena == 2)
+				cadena += decenas[0].substring(0, decenas[0].length() - 1) + "i" + unidades[unidad];
 			else
 				cadena += decenas[decena - 2] + " y " + unidades[unidad];
 			break;
@@ -120,7 +129,7 @@ public class Calculator {
 	 * dd-MM-yyyy
 	 */
 	public static boolean isLeapYear(String fecha) {
-		if (fecha != "" && fecha != null) {
+		if (isValidDate(fecha)) {
 			String anyo = fecha.substring(fecha.length() - 4);
 			int anyoInt = Integer.parseInt(anyo);
 			boolean bisiesto = anyoInt % 4 == 0 && anyoInt % 100 != 0 || anyoInt % 400 == 0;
