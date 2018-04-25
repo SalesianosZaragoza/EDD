@@ -19,19 +19,19 @@ public class Calculator {
 	 * devuelve una lista con los n números de la serie de fibonacci.
 	 */
 	public static List<Integer> fibonacci(int n) {
-		List<Integer> listaFibonacci = new ArrayList<Integer>();
-		if (n == 1)
-			listaFibonacci.add(1);
-		if (n > 1) {
-			listaFibonacci.add(1);
-			listaFibonacci.add(1);
-			if (n > 2)
-				for (int i = 2; i < n; i++)
-					listaFibonacci.add(listaFibonacci.get(listaFibonacci.size() - 1)
-							+ listaFibonacci.get(listaFibonacci.size() - 2));
+		List<Integer> serieFibonacci = new ArrayList<Integer>();
+		if (n > 0) {
+			serieFibonacci.add(1);
+			if (n > 1) {
+				serieFibonacci.add(1);
+				if (n > 2)
+					for (int i = 2; i < n; i++)
+						serieFibonacci.add(serieFibonacci.get(serieFibonacci.size() - 1)
+								+ serieFibonacci.get(serieFibonacci.size() - 2));
+			}
 		}
 
-		return listaFibonacci;
+		return serieFibonacci;
 	}
 
 	/*
@@ -46,7 +46,20 @@ public class Calculator {
 	 * divisores que tiene.
 	 */
 	public static int[] divisors(int n) {
-		throw new NotImplementedException();
+		int[] divisores = null;
+		if (n > 0) {
+			int cantidadDivisores = 0;
+			List<Integer> lista = new ArrayList<Integer>();
+			for (int i = n; i > 0; i--)
+				if (n % i == 0) {
+					cantidadDivisores++;
+					lista.add(i);
+				}
+			divisores = new int[cantidadDivisores];
+			for (int i = 0; i < cantidadDivisores; i++)
+				divisores[i] = lista.get(i);
+		}
+		return divisores;
 	}
 
 	/*
@@ -54,7 +67,7 @@ public class Calculator {
 	 * resulta ser un palíndromo
 	 */
 	public static boolean checkIsPalindrome(String cadena) {
-		String caracteresASustituir[] = { "[àá]", "[éè]", "í", "[óò]", "[úü]" };
+		String caracteresASustituir[] = { "[àá]", "[éè]", "[íï]", "[óò]", "[úü]" };
 		String caracteresSustitutos[] = { "a", "e", "i", "o", "u" };
 		if (cadena == null)
 			return false;
@@ -77,9 +90,29 @@ public class Calculator {
 	 * cincuenta y seis
 	 */
 	public static String speakToMe(int n) {
-		// final String[] unidades = {"cero", "uno", "dos", "tres", "cuatro", "cinco",
-		// "seis", "siete", "ocho", "nueve", };
-		throw new NotImplementedException();
+		String[] unidades = { "cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve" };
+		String[] diezAVeinte = { "diez", "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete",
+				"dieciocho", "diecinueve" };
+		String[] decenas = { "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa" };
+		String cadena = "";
+		int unidad = n % 10;
+		int decena = (n / 10) % 10;
+		switch (decena) {
+		case 0:
+			cadena += unidades[unidad];
+			break;
+		case 1:
+			cadena += diezAVeinte[unidad];
+			break;
+		default:
+			if (unidad == 0)
+				cadena += decenas[decena - 2];
+			else
+				cadena += decenas[decena - 2] + " y " + unidades[unidad];
+			break;
+		}
+		cadena = cadena.substring(0, 1).toUpperCase() + cadena.substring(1);
+		return cadena;
 	}
 
 	/*

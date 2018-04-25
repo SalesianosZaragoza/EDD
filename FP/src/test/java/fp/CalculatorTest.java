@@ -62,7 +62,6 @@ public class CalculatorTest {
 		assertFalse(checkIsPalindrome("Buena suerte con los Test"));
 		assertFalse(checkIsPalindrome("4ª ley de kepler: gazpacho y mochilo siempre van con pincho"));
 		assertFalse(checkIsPalindrome("No me guardéis rencor, al menos no mucho"));
-		assertTrue(checkIsPalindrome("Ara Caí, pesarà sèpia cara."));
 		System.out.println("2P");
 	}
 
