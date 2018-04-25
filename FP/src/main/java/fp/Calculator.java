@@ -19,7 +19,19 @@ public class Calculator {
 	 * devuelve una lista con los n números de la serie de fibonacci.
 	 */
 	public static List<Integer> fibonacci(int n) {
-		throw new NotImplementedException();
+		List<Integer> listaFibonacci = new ArrayList<Integer>();
+		if (n == 1)
+			listaFibonacci.add(1);
+		if (n > 1) {
+			listaFibonacci.add(1);
+			listaFibonacci.add(1);
+			if (n > 2)
+				for (int i = 2; i < n; i++)
+					listaFibonacci.add(listaFibonacci.get(listaFibonacci.size() - 1)
+							+ listaFibonacci.get(listaFibonacci.size() - 2));
+		}
+
+		return listaFibonacci;
 	}
 
 	/*
@@ -65,6 +77,8 @@ public class Calculator {
 	 * cincuenta y seis
 	 */
 	public static String speakToMe(int n) {
+		// final String[] unidades = {"cero", "uno", "dos", "tres", "cuatro", "cinco",
+		// "seis", "siete", "ocho", "nueve", };
 		throw new NotImplementedException();
 	}
 
