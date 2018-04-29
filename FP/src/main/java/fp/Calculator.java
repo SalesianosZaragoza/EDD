@@ -30,7 +30,6 @@ public class Calculator {
 								+ serieFibonacci.get(serieFibonacci.size() - 2));
 			}
 		}
-
 		return serieFibonacci;
 	}
 
@@ -38,16 +37,16 @@ public class Calculator {
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		int numeros[] = null;
+		int numeros[];
+		List<Integer> listaNumeros = new ArrayList<Integer>();
 		if (step != 0) {
-			List<Integer> listaNumeros = new ArrayList<Integer>();
 			for (int i = 1; i <= number / step; i++)
 				if (number - step * i > 0)
 					listaNumeros.add(number - step * i);
-			numeros = new int[listaNumeros.size()];
-			for (int i = 0; i < listaNumeros.size(); i++)
-				numeros[i] = listaNumeros.get(i);
 		}
+		numeros = new int[listaNumeros.size()];
+		for (int i = 0; i < listaNumeros.size(); i++)
+			numeros[i] = listaNumeros.get(i);
 		return numeros;
 	}
 
@@ -59,7 +58,8 @@ public class Calculator {
 		int[] divisores = null;
 		if (n > 0) {
 			List<Integer> listaDivisores = new ArrayList<Integer>();
-			for (int i = n; i > 0; i--)
+			listaDivisores.add(n);
+			for (int i = n / 2; i > 0; i--)
 				if (n % i == 0) {
 					listaDivisores.add(i);
 				}
@@ -78,17 +78,17 @@ public class Calculator {
 		boolean palindromo = true;
 		String caracteresASustituir[] = { "[àá]", "[éè]", "[íï]", "[óò]", "[úü]" };
 		String caracteresSustitutos[] = { "a", "e", "i", "o", "u" };
-		if (cadena == null)
-			palindromo = false;
-		else {
+		if (cadena != null) {
 			for (int i = 0; i < caracteresSustitutos.length; i++)
 				cadena = cadena.replaceAll(caracteresASustituir[i], caracteresSustitutos[i]);
 			cadena = cadena.toLowerCase().replaceAll("\\W", "");
-			int numeroCaracteres = cadena.length();
-			for (int i = 0; i < (numeroCaracteres / 2); i++)
-				if (cadena.charAt(i) != cadena.charAt(numeroCaracteres - i - 1))
+			for (int i = 0; i < (cadena.length() / 2); i++)
+				if (cadena.charAt(i) != cadena.charAt(cadena.length() - i - 1)) {
 					palindromo = false;
-		}
+					break;
+				}
+		} else
+			palindromo = false;
 		return palindromo;
 	}
 
@@ -114,9 +114,23 @@ public class Calculator {
 		default:
 			if (unidad == 0)
 				cadena += decenas[decena - 2];
-			else if (decena == 2)
-				cadena += decenas[0].substring(0, decenas[0].length() - 1) + "i" + unidades[unidad];
-			else
+			else if (decena == 2) {
+				cadena += decenas[0].substring(0, decenas[0].length() - 1) + "i";
+				switch (unidad) {
+				case 2:
+					cadena += "dós";
+					break;
+				case 3:
+					cadena += "trés";
+					break;
+				case 6:
+					cadena += "séis";
+					break;
+				default:
+					cadena += unidades[unidad];
+					break;
+				}
+			} else
 				cadena += decenas[decena - 2] + " y " + unidades[unidad];
 			break;
 		}
@@ -132,8 +146,7 @@ public class Calculator {
 		if (isValidDate(fecha)) {
 			String anyo = fecha.substring(fecha.length() - 4);
 			int anyoInt = Integer.parseInt(anyo);
-			boolean bisiesto = anyoInt % 4 == 0 && anyoInt % 100 != 0 || anyoInt % 400 == 0;
-			if (bisiesto)
+			if (anyoInt % 4 == 0 && anyoInt % 100 != 0 || anyoInt % 400 == 0)
 				return true;
 		}
 		return false;
