@@ -101,41 +101,41 @@ public class Calculator {
 		String[] diezAVeinte = { "diez", "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete",
 				"dieciocho", "diecinueve" };
 		String[] decenas = { "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa" };
-		String cadena = "";
-		int unidad = n % 10;
-		int decena = (n / 10) % 10;
-		switch (decena) {
+		String numeroEnTexto = "";
+		int numUnidad = n % 10;
+		int numDecena = (n / 10) % 10;
+		switch (numDecena) {
 		case 0:
-			cadena += unidades[unidad];
+			numeroEnTexto += unidades[numUnidad];
 			break;
 		case 1:
-			cadena += diezAVeinte[unidad];
+			numeroEnTexto += diezAVeinte[numUnidad];
 			break;
 		default:
-			if (unidad == 0)
-				cadena += decenas[decena - 2];
-			else if (decena == 2) {
-				cadena += decenas[0].substring(0, decenas[0].length() - 1) + "i";
-				switch (unidad) {
+			if (numUnidad == 0)
+				numeroEnTexto += decenas[numDecena - 2];
+			else if (numDecena == 2) {
+				numeroEnTexto += decenas[0].substring(0, decenas[0].length() - 1) + "i";
+				switch (numUnidad) {
 				case 2:
-					cadena += "dós";
+					numeroEnTexto += "dós";
 					break;
 				case 3:
-					cadena += "trés";
+					numeroEnTexto += "trés";
 					break;
 				case 6:
-					cadena += "séis";
+					numeroEnTexto += "séis";
 					break;
 				default:
-					cadena += unidades[unidad];
+					numeroEnTexto += unidades[numUnidad];
 					break;
 				}
 			} else
-				cadena += decenas[decena - 2] + " y " + unidades[unidad];
+				numeroEnTexto += decenas[numDecena - 2] + " y " + unidades[numUnidad];
 			break;
 		}
-		cadena = cadena.substring(0, 1).toUpperCase() + cadena.substring(1);
-		return cadena;
+		numeroEnTexto = numeroEnTexto.substring(0, 1).toUpperCase() + numeroEnTexto.substring(1);
+		return numeroEnTexto;
 	}
 
 	/*
@@ -156,17 +156,17 @@ public class Calculator {
 	 * este metodo devuelve cierto si la fecha es válida
 	 */
 	public static boolean isValidDate(String date) {
-		String anyo, mes, dia;
-		int anyoInt, mesInt, diaInt;
+		String anyoStr, mesStr, diaStr;
+		int anyo, mes, dia;
 		String patron = "\\d{2}" + "-" + "\\d{2}" + "-" + "\\d{4}";
 		if (date.matches(patron)) {
-			anyo = date.substring(date.length() - 4);
-			mes = date.substring(3, 5);
-			dia = date.substring(0, 2);
-			anyoInt = Integer.parseInt(anyo);
-			mesInt = Integer.parseInt(mes);
-			diaInt = Integer.parseInt(dia);
-			if (anyoInt >= 1 && mesInt >= 1 && mesInt < 13 && diaInt >= 1 && diaInt < 32)
+			anyoStr = date.substring(date.length() - 4);
+			mesStr = date.substring(3, 5);
+			diaStr = date.substring(0, 2);
+			anyo = Integer.parseInt(anyoStr);
+			mes = Integer.parseInt(mesStr);
+			dia = Integer.parseInt(diaStr);
+			if (anyo >= 1 && mes >= 1 && mes < 13 && dia >= 1 && dia < 32)
 				return true;
 		}
 		return false;
