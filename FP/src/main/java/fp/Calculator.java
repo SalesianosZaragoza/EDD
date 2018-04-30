@@ -3,6 +3,7 @@ package fp;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Calculator {
@@ -12,7 +13,6 @@ public class Calculator {
      * este metodo devuelve el Class del object que le pasamos
      */
 	public static Class classTypeOf(Object x) {
-		// throw  new NotImplementedException();
 		return x.getClass();
 	}
 
@@ -31,15 +31,25 @@ public class Calculator {
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		throw  new NotImplementedException();
+		// throw  new NotImplementedException();
+		int numbers[] = {};
+		for (int i = number; i >= 0; i--) {
+			numbers[i] = number - step;
+			number -= step;
 		}
+		return numbers[];
+	}
 
 	/*
 	 * Módulo al que se le pasa un número entero del 0 al 20 y devuelve los
 	 * divisores que tiene.
 	 */
 	public static int[] divisors(int n) {
-		throw  new NotImplementedException();
+		// throw  new NotImplementedException();
+		if (n >= 0 && n <= 20) {
+			for (int i = n; i < 0; i--)
+	            if (n % i == 0)
+		}
 	}
 
 	/*
