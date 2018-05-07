@@ -1,8 +1,9 @@
 package fp;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
+import java.util.ArrayList;
 import java.util.List;
+
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class Calculator {
 
@@ -11,7 +12,8 @@ public class Calculator {
      * este metodo devuelve el Class del object que le pasamos
      */
 	public static Class classTypeOf(Object x) {
-		throw  new NotImplementedException();
+		Class clase = x.getClass();
+		return clase;
 	}
 
 
@@ -19,14 +21,37 @@ public class Calculator {
      * devuelve una lista con los n números de la serie de fibonacci.
      */
 	public static List<Integer> fibonacci(int n) {
-		throw  new NotImplementedException();
+		int num1 = 1;
+		int num2 = 1;
+		List<Integer> numFibonacci = new ArrayList<Integer>();
+		numFibonacci.add(num1);
+		numFibonacci.add(num2);
+		int i = 0;
+		while (i <= n - 3) {
+			numFibonacci.add(numFibonacci.get(i) + numFibonacci.get(i + 1));
+			i++;
+		}
+		return numFibonacci;
 	}
 
 	/*
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		throw  new NotImplementedException();
+		int[] numeros;
+		List<Integer> numListas = new ArrayList();
+		int numero = number - step;
+		int i = 0;
+		while (numero > 0) {
+			numListas.add(numero);
+			numero -= step;
+			i++;
+		}
+		numeros = new int[i];
+		for (int j = 0; j < numeros.length; j++) {
+			numeros[j] = numListas.get(j);
+		}
+		return numeros;
 		}
 
 	/*
