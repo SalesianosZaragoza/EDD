@@ -23,17 +23,19 @@ public class Calculator {
 	public static int[] stepThisNumber(int number, int step) {
 		// throw  new NotImplementedException();
 		List<Integer> list = createIntegerList();
-		number = countingSteps(number, step, list);
+		if(step != 0) {
+			countingSteps(number, step, list);
+		}
 		int[] numbers = arrayListToSimpleArray(list);
 		return numbers;
 	}
 
-	private static int countingSteps(int number, int step, List<Integer> list) {
-		for (int i = 0; i < number; i++) {
-			number = number - step;
-			list.add(number);
+	private static void countingSteps(int number, int step, List<Integer> list) {
+		int limit = number / step;
+		for (int i = 1; i <= limit; i++) {
+			if(number - step * i > 0)
+				list.add(number - step * i);
 		}
-		return number;
 	}
 
 	private static List<Integer> createIntegerList() {
