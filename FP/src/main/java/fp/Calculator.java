@@ -21,21 +21,19 @@ public class Calculator {
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		// throw  new NotImplementedException();
 		List<Integer> list = createIntegerList();
 		if(step != 0) {
-			countingSteps(number, step, list);
+			list = countingSteps(number, step);
 		}
-		int[] numbers = arrayListToSimpleArray(list);
-		return numbers;
+		return list.stream().mapToInt(i -> i).toArray();
 	}
 
-	private static void countingSteps(int number, int step, List<Integer> list) {
-		int limit = number / step;
-		for (int i = 1; i <= limit; i++) {
-			if(number - step * i > 0)
-				list.add(number - step * i);
+	private static List<Integer> countingSteps(int number, int step) {
+		List<Integer> list = createIntegerList();
+		for (int i = number - step; i > 0; i = i - step) {
+			list.add(i);
 		}
+		return list;
 	}
 
 	private static List<Integer> createIntegerList() {
@@ -43,34 +41,25 @@ public class Calculator {
 		list = new ArrayList<Integer>();
 		return list;
 	}
-
-	private static int[] arrayListToSimpleArray(List<Integer> list) {
-		int array[] = new int[list.size()];
-		for (int i = 0; i < array.length-1; i++) {
-			array[i] = list.get(i);
-		}
-		return array;
-	}
 	
 	/*
 	 * Módulo al que se le pasa un número entero del 0 al 20 y devuelve los
 	 * divisores que tiene.
 	 */
 	public static int[] divisors(int n) {
+		if (n == 0)
+			return null;
 		List<Integer> list = createIntegerList();
 		if (IsBetween0And20(n)) {
 			checkDivisors(n, list);
 		}
-		int[] divisors = arrayListToSimpleArray(list);
-		return divisors;
+		return list.stream().mapToInt(i -> i).toArray();
 	}
 
 	private static void checkDivisors(int n, List<Integer> list) {
-		int positions = 0;
-		for (int i = n; i < 0; i--)
+		for (int i = n; i > 0; i--)
 		    if (n % i == 0) {
 		    	list.add(i);
-				positions++;
 		    }
 	}
 
@@ -82,23 +71,32 @@ public class Calculator {
 	 * Toma como parámetros una cadena de caracteres y devuelve cierto si la cadena resulta ser un palíndromo
 	 */
 	public static boolean checkIsPalindrome(String cadena) {
-		// throw  new NotImplementedException();
-		boolean valor = true;
-		int ind;
-		String cadena2 = "";
-		for (int x = 0; x < cadena.length(); x++)
-			if (cadena.charAt(x) != ' ')
-				cadena2 += cadena.charAt(x);
-		cadena=cadena2;
-		ind = cadena.length();
-		for (int i = 0; i < (cadena.length()); i++){
-			if (cadena.substring(i, i+1).equals(cadena.substring(ind - 1, ind)) == false) {
-				valor = false;
-				break;
-			}
-			ind--;
-		}
-		return valor;
+		if (null == cadena)
+			return false;
+
+		cadena = replaceNullCharacters(cadena);
+
+		String reverse = new StringBuilder(cadena).reverse().toString();
+		return reverse.equals(cadena);
+	}
+
+	private static String replaceNullCharacters(String cadena) {
+		cadena = cadena.toLowerCase();
+		cadena = cadena.trim();
+		cadena = cadena.replace(" ", "");
+		cadena = cadena.replace(",", "");
+		cadena = cadena.replace(".", "");
+		cadena = cadena.replace("?", "");
+		cadena = cadena.replace("¿", "");
+		cadena = cadena.replace(":", "");
+		cadena = cadena.replace("è", "");
+		cadena = cadena.replace("·", "");
+		cadena = cadena.replace("á", "a");
+		cadena = cadena.replace("é", "e");
+		cadena = cadena.replace("í", "i");
+		cadena = cadena.replace("ó", "o");
+		cadena = cadena.replace("ú", "u");
+		return cadena;
 	}
 
 	/*
