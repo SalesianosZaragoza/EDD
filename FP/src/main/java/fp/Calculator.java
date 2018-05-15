@@ -5,12 +5,15 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Test;
+
 public class Calculator {
 
 
 	/*
      * este metodo devuelve el Class del object que le pasamos
      */
+	@Test
 	public static Class classTypeOf(Object x) {
 		throw  new NotImplementedException();
 		Class clase = x.getClass();
@@ -21,6 +24,7 @@ public class Calculator {
 	/*
      * devuelve una lista con los n números de la serie de fibonacci.
      */
+	@Test
 	public static List<Integer> fibonacci(int n) {
 		throw  new NotImplementedException();
 		List<Integer> Fibonacci = new ArrayList<Integer>();
@@ -41,6 +45,7 @@ public class Calculator {
 	/*
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
+	@Test
 	public static int[] stepThisNumber(int number, int step) {
 		throw  new NotImplementedException();
 				int[] numeros;
@@ -63,6 +68,7 @@ public class Calculator {
 	 * Módulo al que se le pasa un número entero del 0 al 20 y devuelve los
 	 * divisores que tiene.
 	 */
+	@Test
 	public static int[] divisors(int n) {
 		throw  new NotImplementedException();
 		int divisores[];
@@ -86,8 +92,38 @@ public class Calculator {
 	/*
 	 * Toma como parámetros una cadena de caracteres y devuelve cierto si la cadena resulta ser un palíndromo
 	 */
+	@Test
 	public static boolean checkIsPalindrome(String cadena) {
 		throw  new NotImplementedException();
+		String s = cadena;
+		boolean espalindrome = true;
+			if (s != null) {
+				s = s.replace(" ", "");
+				s = s.replace(",", "");
+				s = s.replace(".", "");
+				s = s.replace("?", "");
+				s = s.replace("¿", "");
+				s = s.replace(":", "");
+				s = s.replace("á", "a");
+				s = s.replace("é", "e");
+				s = s.replace("è", "e");
+				s = s.replace("·", "");
+				s = s.replace("í", "i");
+				s = s.replace("ó", "o");
+				s = s.replace("ú", "u");
+				s = s.toLowerCase();
+				int fin = s.length() - 1;
+				int ini = 0;
+		
+				while (ini < fin) {
+					if (s.charAt(ini) != s.charAt(fin)) {
+						espalindrome = false;
+					}
+					ini++;
+				fin--;
+				}
+			}
+			return espalindrome;
 	}
 
 	/*
@@ -96,19 +132,55 @@ public class Calculator {
 	 */
 	public static String speakToMe(int n) {
 		throw  new NotImplementedException();
+	
 	}
 
 	/*
 	 * este metodo devuelve cierto si el año de la fecha es bisiesto fecha
 	 * dd-MM-yyyy
 	 */
+	@Test
 	public static boolean isLeapYear(String fecha) {
 		throw  new NotImplementedException();
+		String añoenletra = "";
+				String calcdivisible = "";
+				Integer añoennumero;
+				int digitos;
+				if (fecha != null && fecha != "") {
+					
+					for (int i = 6; i < fecha.length(); i++) {
+						añoenletra += fecha.charAt(i);
+					}
+		
+					
+					añoennumero = Integer.valueOf(añoenletra);
+					
+					añoenletra = añoennumero.toString();
+		
+					for (int i = 2; i < añoenletra.length(); i++) {
+						calcdivisible += añoenletra.charAt(i);
+					}
+		
+					digitos = Integer.parseInt(calcdivisible);
+		
+					if ((añoennumero % 400) == 0) {
+						return true;
+		
+				} else if ((añoennumero % 4) == 0 && (añoennumero % 100) != 0) {
+						return true;
+				} else {
+			
+					return false;
+				}
+			}
+		
+			return true;
 	}
 
 	/*
 	 * este metodo devuelve cierto si la fecha es válida
 	 */
+	@Test
 	public static boolean isValidDate(String date) {
 		throw  new NotImplementedException();
 		String anyo, mes, dia;
