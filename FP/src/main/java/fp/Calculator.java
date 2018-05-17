@@ -130,9 +130,31 @@ public class Calculator {
 	 * Pedir un número de 0 a 99 y mostrarlo escrito. Por ejemplo, para 56
 	 * mostrar: cincuenta y seis
 	 */
+	@Test
 	public static String speakToMe(int n) {
 		throw  new NotImplementedException();
-	
+		String numeroescrito = "";
+				String[] unidades = { "Cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve",
+						"Diez", "Once", "Doce", "Trece", "Catorce", "Quince", "Diecesies", "Diecisiete", "Dicieocho",
+						"Dicienueve" };
+				String[] decenas = { "Cero", "Diez", "Veinte", "Treinta", "Cuarenta", "Cincuenta", "Sesenta", "Setenta",
+						"Ochenta", "Noventa" };
+				if (n < 100) {
+					if (n >= 20) {
+						if ((n % 10) != 0) {
+							numeroescrito += decenas[(n / 10)];
+							numeroescrito += " y " + unidades[(n % 10)];
+		
+						} else {
+							numeroescrito += decenas[(n / 10)];
+						}
+					} else {
+						numeroescrito += unidades[n];
+				}
+				System.out.println(numeroescrito);
+		
+				return numeroescrito;
+				}
 	}
 
 	/*
@@ -142,23 +164,23 @@ public class Calculator {
 	@Test
 	public static boolean isLeapYear(String fecha) {
 		throw  new NotImplementedException();
-		String añoenletra = "";
+		String añoletra = "";
 				String calcdivisible = "";
 				Integer añoennumero;
 				int digitos;
 				if (fecha != null && fecha != "") {
 					
 					for (int i = 6; i < fecha.length(); i++) {
-						añoenletra += fecha.charAt(i);
+						añoletra += fecha.charAt(i);
 					}
 		
 					
-					añoennumero = Integer.valueOf(añoenletra);
+					añoennumero = Integer.valueOf(añoletra);
 					
-					añoenletra = añoennumero.toString();
+					añoletra = añoennumero.toString();
 		
-					for (int i = 2; i < añoenletra.length(); i++) {
-						calcdivisible += añoenletra.charAt(i);
+					for (int i = 2; i < añoletra.length(); i++) {
+						calcdivisible += añoletra.charAt(i);
 					}
 		
 					digitos = Integer.parseInt(calcdivisible);
