@@ -117,7 +117,23 @@ public class Calculator {
 	 * mostrar: cincuenta y seis
 	 */
 	public static String speakToMe(int n) {
-		throw  new NotImplementedException();
+		String numero="";
+		       String cero = "Cero";
+				String unidades[] = {"uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"};
+				String decenas[] = {"Diez", "Veinte", "Treinta", "Cuarenta", "Cincuenta", "Sesenta", "Setenta", "Ochenta", "Noventa"};
+				if(n==0){
+				    numero+=cero;
+				} else if(n<10){
+			    numero+=unidades[n-1];
+				} else if(n%10==0){
+				    numero+=decenas[(n/10)-1];
+				} else {
+				    int unidad=n%10;
+				    int decena=n/10;
+				    numero=decenas[decena-1]+" y "+unidades[unidad-1];
+				}
+				return numero;
+		}
 	}
 
 	/*
@@ -125,20 +141,52 @@ public class Calculator {
 	 * dd-MM-yyyy
 	 */
 	public static boolean isLeapYear(String fecha) {
-		int anio ;
-		
-		if ((anio % 4 == 0))
-			System.out.println("El año es bisiesto");
-		else
-			System.out.println("El año no es bisiesto");
-			return false;
+		boolean is=false;
+		        String date = "";
+		       char letter;
+		       if(fecha.length()>1){
+		            for(int i=4;i>0;i--){
+		                letter = fecha.charAt(fecha.length()-i);
+		                date += letter;
+		            }
+		            int year = Integer.parseInt(date);
+		            if ((year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0))){
+		                is=true;
+		            }
+		        }
+		        return is;
+		    }
 	}
 
 	/*
 	 * este metodo devuelve cierto si la fecha es válida
 	 */
 	public static boolean isValidDate(String date) {
-		
+		 if(date.length()!=10)
+						 			return false;
+						 		else{
+						 			Integer año,mes,dia;
+						 			dia=Integer.parseInt(date.substring(0,2));
+						 			mes=Integer.parseInt(date.substring(3,5));
+						 			año=Integer.parseInt(date.substring(6));
+						 
+						 			if(año!=null && mes<=12 && mes>0 && dia>0 && año>0){
+						 				if((mes==4 || mes==6 ||mes==7 || mes==9 || mes==11) && dia<=30){
+						 					return true;
+						 				}else{
+						 					if((mes==2 && isLeapYear(date) && dia<=29)||(mes==2 && !(isLeapYear(date)) && dia<=28)){
+						 						return true;
+						 					}else{
+						 						if((mes!=2) && dia<=31)
+						 							return true;
+						 						else 
+						 							return false;
+						 					}
+						 				}
+						 			}else
+						 				return false;
+						 		}
+			 	}	
 		return false;
 		
 	}
