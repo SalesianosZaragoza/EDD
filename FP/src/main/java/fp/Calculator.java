@@ -1,10 +1,6 @@
 package fp;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
-
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class Calculator {
 
@@ -40,7 +36,17 @@ public class Calculator {
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		throw new NotImplementedException();
+		int length = 0;
+		if (step > 0 && number > 0) {
+			length = (number - 1) / step;
+			int steps[] = new int[length];
+			for (int i = 0; i < steps.length; i++) {
+				number -= step;
+				steps[i] = number;
+			}
+			return steps;
+		} else
+			return new int[0];
 	}
 
 	/*
@@ -71,21 +77,26 @@ public class Calculator {
 	 * resulta ser un palíndromo
 	 */
 	public static boolean checkIsPalindrome(String cadena) {
-		String nombre1 = "";
-		if (cadena == null) {
+		boolean valor = true;
+		int i, ind;
+		String cadena2 = "";
+		if (cadena == null)
 			return false;
-		} else {
-			for (int i = cadena.length() - 1; i >= 0; i--) {
-
-				nombre1 = nombre1 + cadena.charAt(i);
-
-			}
-			if (cadena.equals(nombre1)) {
-				return true;
-			}
+		// quitamos los espacios
+		for (int x = 0; x < cadena.length(); x++) {
+			if (cadena.charAt(x) != ' ')
+				cadena2 += cadena.charAt(x);
 		}
-		return false;
-
+		cadena = cadena2;
+		ind = cadena.length();
+		for (i = 0; i < (cadena.length()); i++) {
+			if (cadena.substring(i, i + 1).equals(cadena.substring(ind - 1, ind)) == false) {
+				valor = false;
+				break;
+			}
+			ind--;
+		}
+		return valor;
 	}
 
 	/*
@@ -149,13 +160,32 @@ public class Calculator {
 	 * este metodo devuelve cierto si la fecha es válida
 	 */
 	public static boolean isValidDate(String date) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		dateFormat.setLenient(false);
-		try {
-			dateFormat.parse(date.trim());
-		} catch (ParseException pe) {
+		Integer year;
+		Integer month;
+		Integer day;
+		if (date.length() != 10)
 			return false;
+		else {
+			day = Integer.parseInt(date.substring(0, 2));
+			month = Integer.parseInt(date.substring(3, 5));
+			year = Integer.parseInt(date.substring(6));
+
+			if (year != null && month <= 12 && month > 0 && day > 0 && year > 0) {
+				if ((month == 4 || month == 6 || month == 7 || month == 9 || month == 11) && day <= 30) {
+					return true;
+				} else {
+					if ((month == 2 && isLeapYear(date) && day <= 29)
+							|| (month == 2 && !(isLeapYear(date)) && day <= 28)) {
+						return true;
+					} else {
+						if ((month != 2) && day <= 31)
+							return true;
+						else
+							return false;
+					}
+				}
+			} else
+				return false;
 		}
-		return true;
 	}
 }
