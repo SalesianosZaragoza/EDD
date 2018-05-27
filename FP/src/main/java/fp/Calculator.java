@@ -94,12 +94,27 @@ public class Calculator {
 	 * Toma como parámetros una cadena de caracteres y devuelve cierto si la cadena resulta ser un palíndromo
 	 */
 	public static boolean checkIsPalindrome(String cadena) {
-		for(int i = 0; i < cadena.length(); i++) {
-	        if(cadena.charAt(i) != cadena.charAt(cadena.length() - 1 - i)) {
-	            return false;
-	        }
-	    }
-	    return true;
+		if(cadena==null)
+			return false;
+		else{
+		String letrasEspeciales = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ:;-_,.?¿¡!·";
+		String ascii = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC           ";
+		String derecho = cadena.toLowerCase();
+		String inverso="";
+					    
+			for (int i=0; i<letrasEspeciales.length(); i++) {
+				derecho = derecho.replace(letrasEspeciales.charAt(i), ascii.charAt(i));
+			}
+			derecho=derecho.replace(" ", "");
+					    
+			for(int i=derecho.length()-1;i>=0;i--)
+				inverso+=derecho.charAt(i);
+					    
+			if(derecho.equals(inverso))
+				return true;
+			else
+				return false;
+		}
 	}
 
 	/*
@@ -139,6 +154,29 @@ public class Calculator {
 	 * este metodo devuelve cierto si la fecha es válida
 	 */
 	public static boolean isValidDate(String date) {
-		throw  new NotImplementedException();
+		if (date.length() != 10)
+			return false;
+		else {
+		Integer dia, mes, año;
+		dia = Integer.parseInt(date.substring(0, 2));
+		mes = Integer.parseInt(date.substring(3, 5));
+		año = Integer.parseInt(date.substring(6));
+			
+		if (año != null && mes <= 12 && mes > 0 && dia > 0 && año > 0) {
+			if ((mes == 4 || mes == 6 || mes == 7 || mes == 9 || mes == 11) && dia <= 30) {
+				return true;
+		} else {
+			if ((mes == 2 && isLeapYear(date) && dia <= 29) || (mes == 2 && !(isLeapYear(date)) && dia <= 28)) {
+				return true;
+			} else {
+				if ((mes != 2) && dia <= 31)
+					return true;
+				else
+					return false;
+			}
+		}
+		} else
+			return false;
+		}
 	}
 }
