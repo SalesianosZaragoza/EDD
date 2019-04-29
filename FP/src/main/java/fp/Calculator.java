@@ -2,6 +2,7 @@ package fp;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {
@@ -16,25 +17,56 @@ public class Calculator {
 
 
 	/*
-     * devuelve una lista con los n números de la serie de fibonacci.
-     */
+	 * devuelve una lista con los n números de la serie de fibonacci.
+	 */
 	public static List<Integer> fibonacci(int n) {
-		throw  new NotImplementedException();
+		List<Integer> list = new ArrayList<Integer>();
+		int n1 = 0;
+		int n2 = 1;
+		list.add(n2);
+		for(int i = 0; i< n - 1; i++){
+			n2 = n1 + n2;
+			n1 = n2 - n1;
+			list.add(n2);
+		}
+		return list;
 	}
 
 	/*
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		throw  new NotImplementedException();
+		int numbers[];
+		List<Integer> listNumbers = new ArrayList<Integer>();
+		if (step != 0) {
+			for (int i = 1; i <= number / step; i++)
+				if (number - step * i > 0)
+					listNumbers.add(number - step * i);
 		}
+		numbers = new int[listNumbers.size()];
+		for (int i = 0; i < listNumbers.size(); i++)
+			numbers[i] = listNumbers.get(i);
+		return numbers;
+	}
 
 	/*
 	 * Módulo al que se le pasa un número entero del 0 al 20 y devuelve los
 	 * divisores que tiene.
 	 */
 	public static int[] divisors(int n) {
-		throw  new NotImplementedException();
+		int[] divisors = null;
+		if (n > 0) {
+			List<Integer> listDivisors = new ArrayList<Integer>();
+			listDivisors.add(n);
+			for (int i = n / 2; i > 0; i--)
+				if (n % i == 0) {
+					listDivisors.add(i);
+				}
+			divisors = new int[listDivisors.size()];
+			for (int i = 0; i < listDivisors.size(); i++)
+				divisors[i] = listDivisors.get(i);
+		}
+		return divisors;
 	}
 
 	/*
