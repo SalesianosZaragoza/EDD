@@ -9,10 +9,10 @@ public class Calculator {
 
 
 	/*
-     * este metodo devuelve el Class del object que le pasamos
-     */
+	 * este metodo devuelve el Class del object que le pasamos
+	 */
 	public static Class classTypeOf(Object x) {
-		throw  new NotImplementedException();
+		return x.getClass();
 	}
 
 
@@ -88,14 +88,33 @@ public class Calculator {
 	 * este metodo devuelve cierto si el año de la fecha es bisiesto fecha
 	 * dd-MM-yyyy
 	 */
-	public static boolean isLeapYear(String fecha) {
-		throw  new NotImplementedException();
+	public static boolean isLeapYear(String date) {
+		if (isValidDate(date)) {
+			String year = date.substring(date.length() - 4);
+			int yearInt = Integer.parseInt(year);
+			if (yearInt % 4 == 0 && yearInt % 100 != 0 || yearInt % 400 == 0)
+				return true;
+		}
+		return false;
 	}
 
 	/*
 	 * este metodo devuelve cierto si la fecha es válida
 	 */
 	public static boolean isValidDate(String date) {
-		throw  new NotImplementedException();
+		String yearStr, monthStr, dayStr;
+		int year, month, day;
+		String patron = "\\d{2}" + "-" + "\\d{2}" + "-" + "\\d{4}";
+		if (date.matches(patron)) {
+			yearStr = date.substring(date.length() - 4);
+			monthStr = date.substring(3, 5);
+			dayStr = date.substring(0, 2);
+			year = Integer.parseInt(yearStr);
+			month = Integer.parseInt(monthStr);
+			day = Integer.parseInt(dayStr);
+			if (year >= 1 && month >= 1 && month < 13 && day >= 1 && day < 32)
+				return true;
+		}
+		return false;
 	}
 }
