@@ -1,5 +1,4 @@
 package fp;
-
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
@@ -7,14 +6,12 @@ import java.util.List;
 
 public class Calculator {
 
-
 	/*
 	 * este metodo devuelve el Class del object que le pasamos
 	 */
 	public static Class classTypeOf(Object x) {
 		return x.getClass();
 	}
-
 
 	/*
 	 * devuelve una lista con los n números de la serie de fibonacci.
@@ -72,8 +69,22 @@ public class Calculator {
 	/*
 	 * Toma como parámetros una cadena de caracteres y devuelve cierto si la cadena resulta ser un palíndromo
 	 */
-	public static boolean checkIsPalindrome(String cadena) {
-		throw  new NotImplementedException();
+	public static boolean checkIsPalindrome(String chain) {
+		boolean palindrome = true;
+		String characterToReplace[] = { "[àá]", "[éè]", "[íï]", "[óò]", "[úü]" };
+		String characterSubstitutes[] = { "a", "e", "i", "o", "u" };
+		if (chain != null) {
+			for (int i = 0; i < characterSubstitutes.length; i++)
+				chain = chain.replaceAll(characterToReplace[i], characterSubstitutes[i]);
+			chain = chain.toLowerCase().replaceAll("\\W", "");
+			for (int i = 0; i < (chain.length() / 2); i++)
+				if (chain.charAt(i) != chain.charAt(chain.length() - i - 1)) {
+					palindrome = false;
+					break;
+				}
+		} else
+			palindrome = false;
+		return palindrome;
 	}
 
 	/*
@@ -81,7 +92,45 @@ public class Calculator {
 	 * mostrar: cincuenta y seis
 	 */
 	public static String speakToMe(int n) {
-		throw  new NotImplementedException();
+		String[] units = { "cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve" };
+		String[] tenToTwenty = { "diez", "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete",
+				"dieciocho", "diecinueve" };
+		String[] tens = { "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa" };
+		String numberOnText = "";
+		int numUnit = n % 10;
+		int numTen = (n / 10) % 10;
+		switch (numTen) {
+		case 0:
+			numberOnText += units[numUnit];
+			break;
+		case 1:
+			numberOnText += tenToTwenty[numUnit];
+			break;
+		default:
+			if (numUnit == 0)
+				numberOnText += tens[numTen - 2];
+			else if (numTen == 2) {
+				numberOnText += tens[0].substring(0, tens[0].length() - 1) + "i";
+				switch (numUnit) {
+				case 2:
+					numberOnText += "dós";
+					break;
+				case 3:
+					numberOnText += "trés";
+					break;
+				case 6:
+					numberOnText += "séis";
+					break;
+				default:
+					numberOnText += units[numUnit];
+					break;
+				}
+			} else
+				numberOnText += tens[numTen - 2] + " y " + units[numUnit];
+			break;
+		}
+		numberOnText = numberOnText.substring(0, 1).toUpperCase() + numberOnText.substring(1);
+		return numberOnText;
 	}
 
 	/*
