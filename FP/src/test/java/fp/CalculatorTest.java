@@ -1,6 +1,5 @@
 package fp;
 
-
 import static fp.Calculator.checkIsPalindrome;
 import static fp.Calculator.classTypeOf;
 import static fp.Calculator.divisors;
@@ -9,21 +8,19 @@ import static fp.Calculator.isLeapYear;
 import static fp.Calculator.isValidDate;
 import static fp.Calculator.speakToMe;
 import static fp.Calculator.stepThisNumber;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
-
 
 	@Test
 	public void testClassType() {
@@ -57,29 +54,21 @@ public class CalculatorTest {
 	@Test
 	public void testIsPalindrome() {
 		assertNotNull(checkIsPalindrome(null));
-		assertTrue(
-checkIsPalindrome("No Mara, sometamos o matemos a Ramón."));
-		assertTrue(
-checkIsPalindrome("¿Acaso hubo búhos acá?"));
-		assertTrue(
-checkIsPalindrome("No lata, no: la totalidad arada dilato talón a talón."));
-		assertTrue(
-checkIsPalindrome("Allí, tieta Mercè, faci cafè, crema, te i til·la"));
-		assertTrue(
-checkIsPalindrome("No Mara, sometamos o matemos a Ramón."));
-		assertFalse(
-				checkIsPalindrome("Buena suerte con los Test"));
-		assertFalse(
-checkIsPalindrome("4ª ley de kepler: gazpacho y mochilo siempre van con pincho"));
-		assertFalse(
-checkIsPalindrome("No me guardéis rencor, al menos no mucho"));
+		assertTrue(checkIsPalindrome("No Mara, sometamos o matemos a Ramón."));
+		assertTrue(checkIsPalindrome("¿Acaso hubo búhos acá?"));
+		assertTrue(checkIsPalindrome("No lata, no: la totalidad arada dilato talón a talón."));
+		assertTrue(checkIsPalindrome("Allí, tieta Mercè, faci cafè, crema, te i til·la"));
+		assertTrue(checkIsPalindrome("No Mara, sometamos o matemos a Ramón."));
+		assertFalse(checkIsPalindrome("Buena suerte con los Test"));
+		assertFalse(checkIsPalindrome("4ª ley de kepler: gazpacho y mochilo siempre van con pincho"));
+		assertFalse(checkIsPalindrome("No me guardéis rencor, al menos no mucho"));
 		System.out.println("2P");
 	}
 
 	@Test
 	public void testSpeakToMe() {
 		assertNotNull(speakToMe(0));
-		assertEquals(speakToMe(0), "Cero");
+		assertEquals("Cero", speakToMe(0));
 		assertEquals(speakToMe(10), "Diez");
 		assertEquals(speakToMe(20), "Veinte");
 		assertEquals(speakToMe(60), "Sesenta");
@@ -116,14 +105,13 @@ checkIsPalindrome("No me guardéis rencor, al menos no mucho"));
 		System.out.println("1P");
 	}
 
-
 	@Test
 	public void testFibonacci() {
 
 		int numberOfElements = 5;
 		List<Integer> expResult = Arrays.asList(1, 1, 2, 3, 5);
 		List<Integer> result = fibonacci(numberOfElements);
-		assertEquals(expResult, result);
+		assertEquals(expResult, result, "no son iguales");
 
 		numberOfElements = 10;
 		expResult = Arrays.asList(1, 1, 2, 3, 5, 8, 13, 21, 34, 55);
