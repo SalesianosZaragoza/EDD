@@ -6,7 +6,7 @@ public class MiClase extends JFrame {
 
 	public MiClase() {
 		super();
-		setTitle("miventa");
+		setTitle("mi_ventana");
 		setVisible(true);
 	}
 
@@ -18,6 +18,7 @@ public class MiClase extends JFrame {
 		if (null == n1 || null == n2) {
 			throw new Exception();
 		}
+
 		return n1 + n2;
 	}
 
@@ -26,6 +27,9 @@ public class MiClase extends JFrame {
 	}
 
 	public int sumTwoNumbers4(Integer n1, Integer n2) throws Exception {
+		if (n1 == 0 || n2 == 0) {
+			throw new Exception("no puedo sumar con numeros de cero");
+		}
 		return n1 + n2;
 	}
 

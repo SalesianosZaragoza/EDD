@@ -13,7 +13,7 @@ public class Factory {
 		arrayList.add(container1);
 
 		Container container2 = new Container();
-		container2.setProperty("azul");
+		container2.setProperty("rojo");
 		arrayList.add(container2);
 		
 		// TODO
