@@ -14,6 +14,10 @@ public class MiClase extends JFrame {
 		return n1 + n2;
 	}
 
+	public void otrometodo() {
+		sumTwoNumbers(5, 6);
+	}
+
 	public int sumTwoNumbers2(Integer n1, Integer n2) throws Exception {
 		if (null == n1 || null == n2) {
 			throw new Exception();
@@ -26,7 +30,7 @@ public class MiClase extends JFrame {
 		return n1 + n2;
 	}
 
-	public int sumTwoNumbers4(Integer n1, Integer n2) throws Exception {
+	public int sumTwoNumbersIfTheyNotZero(Integer n1, Integer n2) throws Exception {
 		if (n1 == 0 || n2 == 0) {
 			throw new Exception("no puedo sumar con numeros de cero");
 		}

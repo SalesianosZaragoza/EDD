@@ -22,7 +22,7 @@ import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
 
-	@Test
+	@Test()
 	public void testClassType() {
 		assertNotNull(classTypeOf(0));
 		assertEquals(classTypeOf(Integer.valueOf(0)), Integer.class);
