@@ -1,4 +1,4 @@
-package es.salesianos.edu;
+package es.salesianos.filter;
 
 
 public class Factorial {
@@ -8,7 +8,7 @@ public class Factorial {
 		System.out.println("Mi factorial es "+resultado);
 	}
 	
-	// Método Java no recursivo para calcular el factorial de un número
+	// Mï¿½todo Java no recursivo para calcular el factorial de un nï¿½mero
 	public static double factorialIterativo(int n){
 	    double fact=1;
 	    int i;
@@ -23,7 +23,7 @@ public class Factorial {
 	 return fact;
 	}
 	
-	// Método Java recursivo para calcular el factorial de un número
+	// Mï¿½todo Java recursivo para calcular el factorial de un nï¿½mero
 	public static double factorialRecursivo(int n){
 	    if (n==0){
 	        return 1;

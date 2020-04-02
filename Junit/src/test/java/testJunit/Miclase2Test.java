@@ -1,6 +1,7 @@
 package testJunit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -42,6 +43,14 @@ class Miclase2Test {
 		int sumTwoNumbers = clase.sumTwoNumbers(0, 1);
 		System.out.println(sumTwoNumbers);
 		assertEquals(1, sumTwoNumbers);
+
+	}
+
+	@Test
+	public void testAsssertsame() {
+		MiClase a = new MiClase();
+		MiClase b = a;// new MiClase();
+		assertSame(a, b);
 
 	}
 

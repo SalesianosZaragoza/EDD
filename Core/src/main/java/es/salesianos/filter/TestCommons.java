@@ -1,4 +1,4 @@
-package es.salesianos.edu;
+package es.salesianos.filter;
 
 import org.apache.commons.lang3.StringUtils;
 

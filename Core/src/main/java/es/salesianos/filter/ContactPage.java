@@ -1,4 +1,4 @@
-package es.salesianos.edu;
+package es.salesianos.filter;
 
 import java.util.HashMap;
 import java.util.Map;

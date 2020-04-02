@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+import es.salesianos.filter.ReverseSentences;
+
 public class ReverseSentencesTest {
 
 	@Test
