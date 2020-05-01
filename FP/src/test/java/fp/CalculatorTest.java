@@ -22,7 +22,7 @@ import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
 
-	@Test()
+	@Test
 	public void testClassType() {
 		assertNotNull(classTypeOf(0));
 		assertEquals(classTypeOf(Integer.valueOf(0)), Integer.class);
@@ -109,15 +109,14 @@ public class CalculatorTest {
 	public void testFibonacci() {
 
 		int numberOfElements = 5;
-		List<Integer> expResult = Arrays.asList(1, 1, 2, 3, 5);
+		List<Integer> expResult = Arrays.asList(0, 1, 1, 2, 3, 5); // The sequence starts by 0
 		List<Integer> result = fibonacci(numberOfElements);
 		assertEquals(expResult, result, "no son iguales");
 
 		numberOfElements = 10;
-		expResult = Arrays.asList(1, 1, 2, 3, 5, 8, 13, 21, 34, 55);
+		expResult = Arrays.asList(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55);
 		result = fibonacci(numberOfElements);
 		assertEquals(expResult, result);
 		System.out.println("1P");
 	}
-
 }
