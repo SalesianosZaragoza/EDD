@@ -89,27 +89,14 @@ public class Calculator {
 		if(cadena==null) {
 			return false;
 		}
-		String frase2 = cadena.toLowerCase();
+		String fraseEnMinusculas = cadena.toLowerCase();
 		String frase3 = "";
 		char [] vocalesTilde = {'á', 'é', 'í', 'ó', 'ú'};
 		char [] vocales = {'a', 'e', 'i', 'o', 'u'};
 		boolean contvocales = true;
 		int cont = 0;
 		
-		for(int i = 0; i < frase2.length(); i++) {
-			if(Character.isLetter(frase2.charAt(i))) {
-				for(int j = 0; j < vocales.length; j++) {
-					if(frase2.charAt(i)==vocalesTilde[j]) {
-						frase3 += vocales[j];
-						contvocales = false;
-					}
-				}
-				if(contvocales) {
-					frase3 += frase2.charAt(i);
-				}
-			}
-			contvocales = true;
-		}
+		frase3 = dejarSoloLetras(fraseEnMinusculas, frase3, vocalesTilde, vocales, contvocales);
 		for(int i = 0; i < (frase3.length()/2); i++) {
 			if(frase3.charAt(i)==frase3.charAt(frase3.length()-i-1)) {
 				cont++;
@@ -122,6 +109,25 @@ public class Calculator {
 			return false;
 		}
 	}
+	
+	private static String dejarSoloLetras(String fraseEnMinusculas, String frase3, char[] vocalesTilde, char[] vocales,
+			boolean contvocales) {
+		for(int i = 0; i < fraseEnMinusculas.length(); i++) {
+			if(Character.isLetter(fraseEnMinusculas.charAt(i))) {
+				for(int j = 0; j < vocales.length; j++) {
+					if(fraseEnMinusculas.charAt(i)==vocalesTilde[j]) {
+						frase3 += vocales[j];
+						contvocales = false;
+					}
+				}
+				if(contvocales) {
+					frase3 += fraseEnMinusculas.charAt(i);
+				}
+			}
+			contvocales = true;
+		}
+		return frase3;
+	}
 
 	/*
 	 * Pedir un número de 0 a 99 y mostrarlo escrito. Por ejemplo, para 56
@@ -132,18 +138,13 @@ public class Calculator {
 				"Ochenta", "Noventa"};
 		String [] unidades = {"", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"};
 		
-		if(n == 0) {
-			return "Cero";
-		}else if(n == 11) {
-			return "Once";
-		}else if(n == 12) {
-			return "Doce";
-		}else if(n == 13) {
-			return "Trece";
-		}else if(n == 14) {
-			return "Catorce";
-		}else if(n == 15) {
-			return "Quince";
+		switch (n) {
+			case 0: return "Cero";
+			case 11: return "Once";
+			case 12: return "Doce";
+			case 13: return "Trece";
+			case 14: return "Catorce";
+			case 15: return "Quince";
 		}
 		
 		if(n/10==0) {
@@ -165,18 +166,13 @@ public class Calculator {
 		}
 		String anyo = fecha.substring(fecha.length()-4, fecha.length());
 		int anyoNum = Integer.parseInt(anyo);
-		if(anyoNum%4==0) {
-			if(anyoNum%100==0) {
-				if(anyoNum%400==0) {
-					return true;
-				}else {
-					return false;
-				}
-			}else {
-				return true;
-			}
-			
-		}else {
+		if(anyoNum%4==0&&anyoNum%100==0&&anyoNum%400==0) {
+			return true;
+		}
+		else if(anyoNum%4==0&&anyoNum%100!=0) {
+			return true;
+		}
+		else {
 			return false;
 		}
 	}
@@ -195,11 +191,7 @@ public class Calculator {
     		int posicion = date.indexOf("-");
     		int contGuiones = 0;
     	
-    		for(int i = 0; i < date.length(); i++) {
-			if(date.charAt(i)=='-') {
-				contGuiones++;
-			}
-		}
+    		contGuiones = contarGuiones(date, contGuiones);
 		if(contGuiones!=2) {
 			return false;
 		}
@@ -213,11 +205,15 @@ public class Calculator {
     		sAnyo = date.substring(posicion+1, date.length());
     		anyo = Integer.parseInt(sAnyo);
     	
-    		if((dia>0&&dia<=31)&&(mes>0&&mes<=12)&&(anyo>0&&anyo<2020)) {
-    			return true;
-   	 	}
-    		else {
-    			return false;
-    		}
+    		return((dia>0&&dia<=31)&&(mes>0&&mes<=12)&&(anyo>0&&anyo<2020))?true:false;
+	}
+	
+	private static int contarGuiones(String date, int contGuiones) {
+		for(int i = 0; i < date.length(); i++) {
+			if(date.charAt(i)=='-') {
+				contGuiones++;
+			}
+		}
+		return contGuiones;
 	}
 }
