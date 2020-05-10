@@ -74,7 +74,15 @@ public class Calculator {
 	 * Toma como parámetros una cadena de caracteres y devuelve cierto si la cadena resulta ser un palíndromo
 	 */
 	public static boolean checkIsPalindrome(String cadena) {
-		throw  new NotImplementedException();
+		if (cadena == null) {
+			return false;
+		}else {
+			cadena = cadena.toLowerCase().replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o")
+					.replace("ú", "u").replace(" ", "").replace(".", "").replace(",", "").replace("?", "").replace("¿","")
+					.replace(":", "").replace("·","");
+			String invertir = new StringBuilder(cadena).reverse().toString();
+			return invertir.equals(cadena);
+		}
 	}
 
 	/*
