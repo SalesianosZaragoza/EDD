@@ -1,5 +1,6 @@
 package fp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -11,7 +12,8 @@ public class Calculator {
      * este metodo devuelve el Class del object que le pasamos
      */
 	public static Class classTypeOf(Object x) {
-		throw  new NotImplementedException();
+		Class prueba = x.getClass();
+		return prueba;
 	}
 
 
@@ -19,14 +21,32 @@ public class Calculator {
      * devuelve una lista con los n números de la serie de fibonacci.
      */
 	public static List<Integer> fibonacci(int n) {
-		throw new NotImplementedException();
+		List<Integer> a = new ArrayList<Integer>();
+		int cont = 1;
+		a.add(cont);
+
+		for (int i = 1; i < n; i++){
+			int anterior = a.get(i - 1);
+			a.add(cont);
+			cont = anterior + cont;
+		}
+		return a;
 	}
 
 	/*
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		throw  new NotImplementedException();
+		int i = 0;
+		int[] representacion = new int[number];
+		if (number == 0){
+			return representacion;
+		}else {
+			while (number > 0) {
+				representacion[i + 1] = number - step;
+			}
+			return representacion;
+		}
 		}
 
 	/*
@@ -34,7 +54,20 @@ public class Calculator {
 	 * divisores que tiene.
 	 */
 	public static int[] divisors(int n) {
-		throw  new NotImplementedException();
+		int auxiliar = 0;
+		if(n==0) {
+			return null;
+		}
+		for (int i = 1 ; i <= n ; i++)
+			if (n % i == 0)
+				auxiliar++;
+		int []divisores = new int[auxiliar];
+		for (int i = n, j = 0 ; i >0 ; i--)
+			if (n % i == 0) {
+				divisores[j] = i;
+				j++;
+			}
+		return divisores;
 	}
 
 	/*
