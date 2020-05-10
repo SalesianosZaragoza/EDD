@@ -1,5 +1,7 @@
 package fp;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -178,13 +180,28 @@ public class Calculator {
 	 * dd-MM-yyyy
 	 */
 	public static boolean isLeapYear(String fecha) {
-		throw  new NotImplementedException();
+		if(fecha.equals("")) {
+			return false;
+		}
+		String year = fecha.substring(fecha.length()-4);
+		int ano = Integer.parseInt(year);
+		if ((ano % 4 == 0) && ((ano % 100 != 0) || (ano % 400 == 0)))
+			return true;
+		else
+			return false;
 	}
 
 	/*
 	 * este metodo devuelve cierto si la fecha es válida
 	 */
 	public static boolean isValidDate(String date) {
-		throw  new NotImplementedException();
+		try {
+			SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+			formato.setLenient(false);
+			formato.parse(date);
+		} catch (ParseException e) {
+			return false;
+		}
+		return true;
 	}
 }
