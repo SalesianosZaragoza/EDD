@@ -90,7 +90,87 @@ public class Calculator {
 	 * mostrar: cincuenta y seis
 	 */
 	public static String speakToMe(int n) {
-		throw  new NotImplementedException();
+		int valor;
+		int unidades, decenas;
+		String Num = "";
+		valor = n;
+		unidades = valor % 10;
+		decenas = valor / 10;
+		switch (decenas) {
+			case 0:
+				Num = "";
+				break;
+			case 1:
+				Num = "Diez";
+				break;
+			case 2:
+				Num = "Veinte";
+				break;
+			case 3:
+				Num = "Treinta";
+				break;
+			case 4:
+				Num = "Cuarenta";
+				break;
+			case 5:
+				Num = "Cincuenta";
+				break;
+			case 6:
+				Num = "Sesenta";
+				break;
+			case 7:
+				Num = "Setenta";
+				break;
+			case 8:
+				Num = "Ochenta";
+				break;
+			case 9:
+				Num = "Noventa";
+				break;
+		}
+		if ((n > 10)&&unidades>0) {
+			Num = Num + " y ";
+		} else {
+			Num = Num + "";
+		}
+		switch (unidades) {
+			case 0:
+				Num = Num + "";
+				break;
+			case 1:
+				Num = Num + "uno";
+				break;
+			case 2:
+				Num = Num + "dos";
+				break;
+			case 3:
+				Num = Num + "tres";
+				break;
+			case 4:
+				Num = Num + "cuatro";
+				break;
+			case 5:
+				Num = Num + "cinco";
+				break;
+			case 6:
+				Num = Num + "seis";
+				break;
+			case 7:
+				Num = Num + "siete";
+				break;
+			case 8:
+				Num = Num + "ocho";
+				break;
+			case 9:
+				Num = Num + "nueve";
+				break;
+
+		}
+		if(n==0) {
+			return "Cero";
+		}else {
+			return Num;
+		}
 	}
 
 	/*
