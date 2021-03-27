@@ -1,5 +1,7 @@
 package fp;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import java.lang.UnsupportedOperationException;
@@ -11,7 +13,9 @@ public class Calculator {
      * este metodo devuelve el Class del object que le pasamos
      */
 	public static Class classTypeOf(Object x) {
-		throw new UnsupportedOperationException(); 
+
+		//throw  new NotImplementedException();
+		return x.getClass();
 	}
 
 
@@ -19,14 +23,43 @@ public class Calculator {
      * devuelve una lista con los n números de la serie de fibonacci.
      */
 	public static List<Integer> fibonacci(int n) {
-		throw new UnsupportedOperationException(); 
+
+		//throw new NotImplementedException();
+
+		List<Integer> numbers = new ArrayList<>();
+		Integer n1 = 0;
+		Integer n2 = 1;
+		numbers.add(1);
+
+		for (int i = 0; i < n; i++){
+
+			Integer summa = n1 + n2;
+			n1 = n2;
+			n2 = summa;
+			numbers.add(summa);
+
+		}
+
+		return numbers;
+
 	}
 
 	/*
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		throw new UnsupportedOperationException(); 
+
+		int[] solve = new int[number];
+
+		int index = 0;
+		while(number - step > 0) {
+
+			solve[index++] = number -= step;
+		}
+
+		return solve;
+
+		//throw  new NotImplementedException();
 	}
 
 	/*
@@ -34,7 +67,20 @@ public class Calculator {
 	 * divisores que tiene.
 	 */
 	public static int[] divisors(int n) {
-		throw new UnsupportedOperationException(); 
+
+		int[] solve = new int[n];
+
+		for (int i = n; i > 0; i--) {
+
+			if (n % i == 0) {
+
+				solve[n - i] = i;
+			}
+		}
+
+		//throw  new NotImplementedException();
+
+		return solve;
 	}
 
 	/*
