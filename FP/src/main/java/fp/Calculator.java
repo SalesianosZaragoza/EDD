@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class Calculator {
 
+	
 
 	/*
 	 * este metodo devuelve el Class del object que le pasamos
@@ -36,6 +37,7 @@ public class Calculator {
 			fibonacci.add(suma);
 		}
 
+		
 		return fibonacci;
 	}
 
