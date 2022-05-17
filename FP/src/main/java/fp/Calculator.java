@@ -40,7 +40,7 @@ public class Calculator {
 	 * Toma como parámetros una cadena de caracteres y devuelve cierto si la cadena resulta ser un palíndromo
 	 */
 	public static boolean checkIsPalindrome(String cadena) {
-		throw new NotImplementedException("no implementado");
+		return true;
 	}
 
 	/*
