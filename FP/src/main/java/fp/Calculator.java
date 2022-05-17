@@ -9,17 +9,25 @@ public class Calculator {
 	/*
      * este metodo devuelve el Class del object que le pasamos
      */
-	public static Class classTypeOf(Object x) {
-		throw new NotImplementedException("no implementado");
-	}
+	
+    public static Class classTypeOf(Object x) {
+        return x.getClass();
+    }
 
 
 	/*
      * devuelve una lista con los n números de la serie de fibonacci.
      */
 	public static List<Integer> fibonacci(int n) {
-		throw new NotImplementedException("no implementado");
-	}
+        int a = 0, b = 1;
+        List<Integer> lista = new ArrayList<Integer>();
+        for (int i = 0; i < n; i++) {
+            lista.add(a + b);
+            b = a;
+            a = lista.get(i);
+        }
+        return lista;
+    }
 
 	/*
 	 * Escribir todos los números del number al 0 de step en step.
