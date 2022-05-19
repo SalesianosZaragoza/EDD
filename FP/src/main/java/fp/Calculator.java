@@ -33,8 +33,12 @@ public class Calculator {
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		throw new NotImplementedException("no implementado");
-		}
+        List<Integer> cadena = new ArrayList<>();
+        while (number - step > 0){
+            cadena.add(number = number - step);
+        }
+        return Conversor(cadena);
+    }
 
 	/*
 	 * Módulo al que se le pasa un número entero del 0 al 20 y devuelve los
