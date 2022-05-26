@@ -39,14 +39,33 @@ public class Calculator {
         }
         return Conversor(cadena);
     }
+	
+	public static int[] Conversor(List<Integer> list) {
+        int[] cadena = new int[list.size()];
+        for (int i=0; i< list.size(); i++){
+            cadena[i]= list.get(i);
+        }
+        return cadena;
+    }
 
 	/*
-	 * Módulo al que se le pasa un número entero del 0 al 20 y devuelve los
-	 * divisores que tiene.
-	 */
-	public static int[] divisors(int n) {
-		throw new NotImplementedException("no implementado");
-	}
+     * Módulo al que se le pasa un número entero del 0 al 20 y devuelve los
+     * divisores que tiene.
+     */
+    public static int[] divisors(int n) {
+        int divisores[] = null;
+        List<Integer> numeros = new ArrayList<Integer>();
+
+        if (n != 0) {
+            for (int i = n; i > 0; i--)
+                if (n % i == 0)
+                    numeros.add(i);
+            divisores = new int[numeros.size()];
+            for (int i = 0; i < divisores.length; i++)
+                divisores[i] = numeros.get(i);
+        }
+        return divisores;
+    }
 
 	/*
 	 * Toma como parámetros una cadena de caracteres y devuelve cierto si la cadena resulta ser un palíndromo
