@@ -10,7 +10,7 @@ public class Calculator {
      * este metodo devuelve el Class del object que le pasamos
      */
 	public static Class classTypeOf(Object x) {
-		throw new NotImplementedException("no implementado");
+		return x.getClass();
 	}
 
 
