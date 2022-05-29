@@ -40,8 +40,24 @@ public class Calculator {
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		throw new NotImplementedException("no implementado");
+		int aux = number-step;
+
+		List<Integer> numerosList;
+		numerosList = new ArrayList<Integer>();
+		while(aux > 0) {
+			numerosList.add(aux);
+			aux -= step;
 		}
+
+		int[] steps;
+		steps = new int[numerosList.size()];
+
+		for (int i=0; i<numerosList.size(); i++) {
+			steps[i] = numerosList.get(i);
+		}
+
+		return steps;
+	}
 
 	/*
 	 * Módulo al que se le pasa un número entero del 0 al 20 y devuelve los
