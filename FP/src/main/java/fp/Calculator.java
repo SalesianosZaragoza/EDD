@@ -64,7 +64,26 @@ public class Calculator {
 	 * divisores que tiene.
 	 */
 	public static int[] divisors(int n) {
-		throw new NotImplementedException("no implementado");
+		if (n == 0)
+			return null;
+			
+		List<Integer> nums;
+		nums = new ArrayList<Integer>();
+		
+		for (int e=n; e>0; e--)
+			if (n%e == 0)
+				nums.add(e);
+
+		int[] divisores;
+		divisores = new int [nums.size()];
+
+		for (int i=0; i<nums.size(); i++) {
+			divisores[i] = nums.get(i);
+		}
+
+		//divisores[numDivisores-1] = n;
+
+		return divisores; 
 	}
 
 	/*
