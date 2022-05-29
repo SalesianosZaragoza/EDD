@@ -39,7 +39,17 @@ public class Calculator {
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		throw new NotImplementedException("no implementado");
+		if (number < 0 || step < 0) {
+			throw new NotImplementedException("no implementado");
+		}
+		if (number == 0) {
+			return new int[] { 0 };
+		}
+		int[] lista = new int[((number - 1)/ step)];
+		for (int i = 0; i < lista.length; i++) {
+			lista[i] = number - ((i+1) * step);
+		}
+		return lista;
 	}
 
 	/*
