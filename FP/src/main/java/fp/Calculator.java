@@ -1,5 +1,6 @@
 package fp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.NotImplementedException;
@@ -10,7 +11,7 @@ public class Calculator {
      * este metodo devuelve el Class del object que le pasamos
      */
 	public static Class classTypeOf(Object x) {
-		throw new NotImplementedException("no implementado");
+		return x.getClass();
 	}
 
 
@@ -18,15 +19,34 @@ public class Calculator {
      * devuelve una lista con los n números de la serie de fibonacci.
      */
 	public static List<Integer> fibonacci(int n) {
-		throw new NotImplementedException("no implementado");
+		List<Integer> listaFibo = new ArrayList<Integer>();
+		int n1 = 0, n2 = 1, n3 = 0;
+		for (int i = 0; i < n; i++) {
+			n3 = n1 + n2;
+			n2 = n1;
+			n1 = n3;
+			listaFibo.add(n3);
+
+		}
+
+		return listaFibo;
 	}
 
 	/*
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		throw new NotImplementedException("no implementado");
+		List<Integer> listaNumeros = new ArrayList<Integer>();
+		while(number - step > 0){
+			listaNumeros.add(number - step);
+			number -= step;
 		}
+		int[] numeros = new int[listaNumeros.size()];
+		for(int i = 0; i < numeros.length; i++){
+			numeros[i] = listaNumeros.get(i);
+		}
+		return numeros;
+	}
 
 	/*
 	 * Módulo al que se le pasa un número entero del 0 al 20 y devuelve los
@@ -40,7 +60,27 @@ public class Calculator {
 	 * Toma como parámetros una cadena de caracteres y devuelve cierto si la cadena resulta ser un palíndromo
 	 */
 	public static boolean checkIsPalindrome(String cadena) {
-		throw new NotImplementedException("no implementado");
+		if(cadena == null){
+			return false;
+		}
+		else{
+			cadena = cadena.replace(" ", "");
+			cadena = cadena.replace(",", "");
+			cadena = cadena.replace(".", "");
+			System.out.print(cadena);
+			int fin = cadena.length() - 1;
+			int ini = 0;
+			boolean espalin = true;
+
+			while (ini < fin) {
+				if (cadena.charAt(ini) != cadena.charAt(fin)){
+					espalin = false;
+				}
+				ini++;
+				fin--;
+			}
+			return espalin;
+		}
 	}
 
 	/*
