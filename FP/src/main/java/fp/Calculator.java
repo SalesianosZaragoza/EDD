@@ -3,20 +3,22 @@ package fp;
 import java.util.List;
 
 import org.apache.commons.lang3.NotImplementedException;
+
 public class Calculator {
 
-
 	/*
-     * este metodo devuelve el Class del object que le pasamos
-     */
+	 * este metodo devuelve el Class del object que le pasamos
+	 */
 	public static Class classTypeOf(Object x) {
-		throw new NotImplementedException("no implementado");
+		if (x == null) {
+			throw new NotImplementedException("no implementado");
+		}
+		return x.getClass();
 	}
 
-
 	/*
-     * devuelve una lista con los n números de la serie de fibonacci.
-     */
+	 * devuelve una lista con los n números de la serie de fibonacci.
+	 */
 	public static List<Integer> fibonacci(int n) {
 		throw new NotImplementedException("no implementado");
 	}
@@ -26,7 +28,7 @@ public class Calculator {
 	 */
 	public static int[] stepThisNumber(int number, int step) {
 		throw new NotImplementedException("no implementado");
-		}
+	}
 
 	/*
 	 * Módulo al que se le pasa un número entero del 0 al 20 y devuelve los
@@ -37,7 +39,8 @@ public class Calculator {
 	}
 
 	/*
-	 * Toma como parámetros una cadena de caracteres y devuelve cierto si la cadena resulta ser un palíndromo
+	 * Toma como parámetros una cadena de caracteres y devuelve cierto si la cadena
+	 * resulta ser un palíndromo
 	 */
 	public static boolean checkIsPalindrome(String cadena) {
 		throw new NotImplementedException("no implementado");
