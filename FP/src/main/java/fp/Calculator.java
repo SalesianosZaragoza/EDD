@@ -82,7 +82,32 @@ public class Calculator {
 	 * Toma como parámetros una cadena de caracteres y devuelve cierto si la cadena resulta ser un palíndromo
 	 */
 	public static boolean checkIsPalindrome(String cadena) {
-		throw new NotImplementedException("no implementado");
+		if (cadena == null)
+			return false;
+		String frase = cadena.replaceAll("[?¿@,.:·^]*", "");
+		frase = frase.replace(" ", "");
+				frase = frase.replace(",", "");
+				frase = frase.toLowerCase();
+				frase = frase.replace("è", "e");
+				frase = frase.replace("á", "a");
+				frase = frase.replace("é", "e");
+				frase = frase.replace("í", "i");
+				frase = frase.replace("ó", "o");
+				frase = frase.replace("ú", "u");
+				frase = frase.replace(".", "");
+				System.out.print(frase);
+				int fin = frase.length() - 1;
+				int ini = 0;
+				boolean espalin = true;
+
+				while (ini < fin) {
+					if (frase.charAt(ini) != frase.charAt(fin)) { 
+						espalin = false;
+					}
+					ini++;
+					fin--;
+				}
+			return espalin;
 	}
 
 	/*
