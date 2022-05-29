@@ -1,5 +1,6 @@
 package fp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.NotImplementedException;
@@ -18,7 +19,21 @@ public class Calculator {
      * devuelve una lista con los n números de la serie de fibonacci.
      */
 	public static List<Integer> fibonacci(int n) {
-		throw new NotImplementedException("no implementado");
+		List<Integer> nums;
+		nums = new ArrayList<Integer>();
+
+		int f1 = 0;
+		int f2 = 1;
+		int f3 = 1;
+
+		for (int i=0; i<n; i++) {
+			nums.add(f3);
+			f3 = f1 + f2;
+			f1 = f2;
+			f2 = f3;
+		}
+
+		return nums;
 	}
 
 	/*
