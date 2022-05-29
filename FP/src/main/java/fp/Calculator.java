@@ -45,9 +45,9 @@ public class Calculator {
 		if (number == 0) {
 			return new int[] { 0 };
 		}
-		int[] lista = new int[((number - 1)/ step)];
+		int[] lista = new int[((number - 1) / step)];
 		for (int i = 0; i < lista.length; i++) {
-			lista[i] = number - ((i+1) * step);
+			lista[i] = number - ((i + 1) * step);
 		}
 		return lista;
 	}
@@ -57,7 +57,25 @@ public class Calculator {
 	 * divisores que tiene.
 	 */
 	public static int[] divisors(int n) {
-		throw new NotImplementedException("no implementado");
+		if (n < 0 || n > 20) {
+			throw new NotImplementedException("no implementado");
+		}
+		if (n == 0) {
+			return null;
+		}
+		int contador = 0;
+		int[] lista1 = new int[n];
+		for (int i = lista1.length; i > 0; i--) {
+			if (n % i == 0) {
+				lista1[contador] = i;
+				contador++;
+			}
+		}
+		int[] lista2 = new int[contador];
+		for (int i = 0; i < lista2.length; i++) {
+			lista2[i] = lista1[i];
+		}
+		return lista2;
 	}
 
 	/*
