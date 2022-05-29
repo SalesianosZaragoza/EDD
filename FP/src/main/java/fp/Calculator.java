@@ -1,5 +1,6 @@
 package fp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.NotImplementedException;
@@ -10,7 +11,7 @@ public class Calculator {
      * este metodo devuelve el Class del object que le pasamos
      */
 	public static Class classTypeOf(Object x) {
-		throw new NotImplementedException("no implementado");
+		return x.getClass();
 	}
 
 
@@ -18,7 +19,18 @@ public class Calculator {
      * devuelve una lista con los n números de la serie de fibonacci.
      */
 	public static List<Integer> fibonacci(int n) {
-		throw new NotImplementedException("no implementado");
+		List<Integer> fibonnaciList = new ArrayList<Integer>();
+		Integer primerNum = 0, segundoNum = 1;
+		fibonnaciList.add(1);
+
+		for (int i = 0; i < n - 1; i++) {
+			Integer suma = primerNum + segundoNum;
+			primerNum = segundoNum;
+			segundoNum = suma;
+			fibonnaciList.add(suma);
+		}
+
+		return fibonnaciList;
 	}
 
 	/*
