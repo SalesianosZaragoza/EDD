@@ -37,8 +37,20 @@ public class Calculator {
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		throw new NotImplementedException("no implementado");
+		List<Integer> lista = new ArrayList<>();
+		while (number - step > 0) {
+			lista.add(number -= step);
 		}
+		return vectorFinal(lista);
+	}
+
+	public static int[] vectorFinal (List<Integer> list) {
+		int[] vectorEnteros = new int[list.size()];
+		for (int i = 0; i < list.size(); i++) {
+			vectorEnteros[i] = list.get(i);
+		}
+		return vectorEnteros;
+	}
 
 	/*
 	 * Módulo al que se le pasa un número entero del 0 al 20 y devuelve los
