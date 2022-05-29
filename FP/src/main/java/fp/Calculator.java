@@ -38,8 +38,23 @@ public class Calculator {
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	public static int[] stepThisNumber(int number, int step) {
-		throw new NotImplementedException("no implementado");
+		int [] lista;
+		if (step==0||number==0) {
+			lista = new int[1];
+			lista [0] = 0;
+		}else {
+			int length = (number%step==0)?(number/step-1):(number/step);
+			lista= new int[length];
+			int i = number;
+			int contador=0;
+			while (i>step) {
+				i -= step;
+				lista[contador]=i;
+				contador++;
+			}
 		}
+		return lista;
+	}
 
 	/*
 	 * Módulo al que se le pasa un número entero del 0 al 20 y devuelve los
