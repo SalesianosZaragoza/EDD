@@ -200,6 +200,17 @@ public class Calculator {
 	 * este metodo devuelve cierto si la fecha es válida
 	 */
 	public static boolean isValidDate(String date) {
-		throw new NotImplementedException("no implementado");
+		if (date.length()!=10 || date==null)
+			return false;
+		String dia=date.substring(0, 2);
+		int diaNum = Integer.parseInt(dia);
+		String mes=date.substring(3, 5);
+		int mesNum = Integer.parseInt(mes);
+		String año = date.substring(date.length()-4, date.length());
+		int añoNum = Integer.parseInt(año);
+		if(diaNum>0 && diaNum<32 && mesNum>0 &&mesNum<13 && añoNum>0)
+			return true;
+		else
+			return false;
 	}
 }
