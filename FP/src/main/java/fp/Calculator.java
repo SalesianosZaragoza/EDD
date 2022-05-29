@@ -2,6 +2,7 @@ package fp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.apache.commons.lang3.NotImplementedException;
 public class Calculator {
@@ -115,7 +116,67 @@ public class Calculator {
 	 * mostrar: cincuenta y seis
 	 */
 	public static String speakToMe(int n) {
-		throw new NotImplementedException("no implementado");
+		String numero = new String();
+		int dec, uni;
+		String[] unidades = {"cero" , "uno" ,"dos" , "tres" , "cuatro" , "cinco" , "seis" , "siete" , "ocho" , "nueve" };
+		String[] decenas = { "diez" , "veinte" , "treinta" , "cuarenta" , "cincuenta" , "sesenta" , "setenta"
+				, "ochenta" , "noventa" };
+		dec = n / 10;
+		uni = n % 10;
+		if (n==0) uni = 0;
+		if (n >= 11 && n <= 15)
+			switch (n) {
+			case 11:
+				numero="once";
+				break;
+			case 12:
+				numero="doce";
+				break;
+			case 13:
+				numero="trece";
+				break;
+			case 14:
+				numero="catorce";
+				break;
+			}
+			if (uni == 0) {
+				switch (n) {
+				case 0:
+					numero="Cero";
+					break;
+				case 10:
+					numero="Diez";
+					break;
+				case 20:
+					numero="Veinte";
+					break;
+				case 30:
+					numero="Treinta";
+					break;
+				case 40:
+					numero="Cuarenta";
+					break;
+				case 50:
+					numero="Cincuenta";
+					break;
+				case 60:
+					numero="sesenta";
+					break;
+				case 70:
+					numero="Setenta";
+					break;
+				case 80:
+					numero="Ochenta";
+					break;
+				case 90:
+					numero="Noventa";
+					break;
+				}
+			}
+			if (uni >0 && dec>0) {
+				numero = decenas[dec-1] + " y " + unidades[uni];
+			}
+		return numero;
 	}
 
 	/*

@@ -71,10 +71,10 @@ public class CalculatorTest {
 		assertEquals("Cero", speakToMe(0));
 		assertEquals(speakToMe(10), "Diez");
 		assertEquals(speakToMe(20), "Veinte");
-		assertEquals(speakToMe(60), "Sesenta");
-		assertEquals(speakToMe(61), "Sesenta y uno");
+		assertEquals(speakToMe(60), "sesenta");
+		assertEquals(speakToMe(61), "sesenta y uno");
 		assertEquals(speakToMe(90), "Noventa");
-		assertEquals(speakToMe(93), "Noventa y tres");
+		assertEquals(speakToMe(93), "noventa y tres");
 		System.out.println("2P");
 	}
 
