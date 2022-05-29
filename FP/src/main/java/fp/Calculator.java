@@ -66,22 +66,26 @@ public class Calculator {
 	public static int[] divisors(int n) {
 		if (n == 0)
 			return null;
+		else if (n == 1) {
+			int v[] = {1};
+			return v;
+		}
 			
 		List<Integer> nums;
 		nums = new ArrayList<Integer>();
 		
-		for (int e=n; e>0; e--)
+		for (int e=n/2; e>0; e--)
 			if (n%e == 0)
 				nums.add(e);
 
 		int[] divisores;
-		divisores = new int [nums.size()];
+		divisores = new int [nums.size()+1];
 
 		for (int i=0; i<nums.size(); i++) {
-			divisores[i] = nums.get(i);
+			divisores[i+1] = nums.get(i);
 		}
 
-		//divisores[numDivisores-1] = n;
+		divisores[0] = n;
 
 		return divisores; 
 	}
