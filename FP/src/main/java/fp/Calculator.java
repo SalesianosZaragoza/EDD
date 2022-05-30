@@ -83,7 +83,31 @@ public class Calculator {
 	 * resulta ser un palíndromo
 	 */
 	public static boolean checkIsPalindrome(String cadena) {
-		throw new NotImplementedException("no implementado");
+		if (cadena == null) {
+			return false;
+		}
+		String cadena2 = cadena.toLowerCase();
+		String letters2 = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC           ";
+		String letters = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ:;-_,.?¿¡!·";
+		for (int i = 0; i < cadena2.length(); i++) {
+			for (int j = 0; j < letters2.length(); j++) {
+				if (cadena2.charAt(i) == letters2.charAt(j)) {
+					cadena2 = cadena2.replace(cadena2.charAt(i), letters.charAt(j));
+				}
+			}
+		}
+		String cadena3 = "";
+		for (int i = 0; i < cadena2.length(); i++) {
+			if (cadena2.charAt(i) >= 'a' && cadena2.charAt(i) <= 'z') {
+				cadena3 += cadena2.charAt(i);
+			}
+		}
+		for (int i = 0; i < cadena3.length() / 2; i++) {
+			if (cadena3.charAt(i) != cadena3.charAt(cadena3.length() - 1 - i)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/*
