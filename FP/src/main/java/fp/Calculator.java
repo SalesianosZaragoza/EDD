@@ -98,9 +98,23 @@ public class Calculator {
 		if (cadena==null)
 			return false;
 
-		
-
-		return true;
+		String letters2 = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC           ";
+		String letters = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ:;-_,.?¿¡!·";
+		String out = cadena.toLowerCase();
+		String inver = "";
+					
+		for (int i = 0; i < letters.length(); i++) {
+			out = out.replace(letters.charAt(i), letters2.charAt(i));
+		}
+	
+		out = out.replace(" ", "");
+		for (int i = out.length() - 1; i >= 0; i--)
+			inver += out.charAt(i);
+			if (out.equals(inver)) {
+				return true;
+			}else {
+				return false;
+		}
 	}
 
 	/*
