@@ -91,10 +91,16 @@ public class Calculator {
 	}
 
 	/*
-	 * Toma como parámetros una cadena de caracteres y devuelve cierto si la cadena resulta ser un palíndromo
+	 * Toma como parámetros una cadena de caracteres y devuelve cierto si 
+	 * la cadena resulta ser un palíndromo
 	 */
 	public static boolean checkIsPalindrome(String cadena) {
-		throw new NotImplementedException("no implementado");
+		if (cadena==null)
+			return false;
+
+		
+
+		return true;
 	}
 
 	/*
@@ -128,13 +134,25 @@ public class Calculator {
 	 * dd-MM-yyyy
 	 */
 	public static boolean isLeapYear(String fecha) {
-		throw new NotImplementedException("no implementado");
+		if (fecha == "")
+			return false;
+		
+		int anyo = Integer.parseInt(fecha.substring(6));
+
+		return (anyo%4==0 && anyo%100!=0) || (anyo%400==0);
 	}
 
 	/*
 	 * este metodo devuelve cierto si la fecha es válida
 	 */
 	public static boolean isValidDate(String date) {
-		throw new NotImplementedException("no implementado");
+		if (date.length() != 10)
+			return false;
+
+		int dia = Integer.parseInt(date.substring(0,2));
+		int mes = Integer.parseInt(date.substring(3,5));
+		int anyo = Integer.parseInt(date.substring(6));
+
+		return (dia>=1 && dia<=31) && (mes>=1 && mes<=12) && (anyo>0);
 	}
 }
