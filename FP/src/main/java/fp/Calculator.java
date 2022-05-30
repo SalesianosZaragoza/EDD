@@ -1,12 +1,17 @@
 package fp;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.StringUtils;
-public class Calculator {
 
+public class Calculator {
 
 	/*
      * este metodo devuelve el Class del object que le pasamos
@@ -116,21 +121,96 @@ public class Calculator {
 	 * mostrar: cincuenta y seis
 	 */
 	public static String speakToMe(int n) {
-		throw new NotImplementedException("no implementado");
+		String text;
+		int unidad;
+		int decena;
+		
+		unidad = n%10;
+		n = n/10;
+		text = unidadLetras(unidad);
+		decena = n%10;
+		n=n/10;
+		if( (unidad==0) && (decena>0) ) 
+			text = decenaLetras(decena);
+		else if(decena==1) 
+			text = decenas(unidad + 10);
+		else if (decena > 1)
+			text = decenaLetras(decena) + " y " + text.toLowerCase();
+		return text;
 	}
-
+	
+	// Método unidadLetras
+	public static String unidadLetras(int num){
+		switch(num) {
+			case 0: return "Cero";
+			case 1: return "Uno";
+			case 2: return "Dos";
+			case 3: return "Tres";
+			case 4: return "Cuatro";
+			case 5: return "Cinco";
+			case 6: return "Seis";
+			case 7: return "Siete";
+			case 8: return "Ocho";
+			case 9: return "Nueve";
+			default: return "";
+		}
+	}
+	
+	// Método decenaLetras	
+	public static String decenaLetras(int num){
+		switch(num) {
+			case 1: return "Diez";
+			case 2: return "Veinte";
+			case 3: return "Treinta";
+			case 4: return "Cuarenta";
+			case 5: return "Cincuenta";
+			case 6: return "Sesenta";
+			case 7: return "Setenta";
+			case 8: return "Ochenta";
+			case 9: return "Noventa";
+			default: return "";
+		}
+	}
+	
+	public static String decenas(int num) {
+		switch(num) {
+		case 11: return "once";
+		case 12: return "doce";
+		case 13: return "trece";
+		case 14: return "catorce";
+		case 15: return "quince";
+		case 16: return "dieciseis";
+		case 17: return "diecisiete";
+		case 18: return "dieciocho";
+		case 19: return "diecinueve";
+		default: return "";
+		}
+	}
+	
+	
 	/*
 	 * este metodo devuelve cierto si el año de la fecha es bisiesto fecha
 	 * dd-MM-yyyy
 	 */
 	public static boolean isLeapYear(String fecha) {
-		throw new NotImplementedException("no implementado");
+		if(fecha.equals("")) return false;
+		DateTimeFormatter dt_formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		return LocalDate.parse(fecha,dt_formatter).isLeapYear();
 	}
 
+	
 	/*
 	 * este metodo devuelve cierto si la fecha es válida
 	 */
 	public static boolean isValidDate(String date) {
-		throw new NotImplementedException("no implementado");
+		DateFormat d_format = new SimpleDateFormat("dd-MM-yyyy");
+		d_format.setLenient(false);
+		try {
+			d_format.parse(date);
+		} catch(ParseException ex) {
+			return false;
+		}
+		return true;
 	}
+	
 }
