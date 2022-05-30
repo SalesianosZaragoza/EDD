@@ -1,5 +1,8 @@
 package fp;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -216,6 +219,13 @@ public class Calculator {
 	 * este metodo devuelve cierto si la fecha es válida
 	 */
 	public static boolean isValidDate(String date) {
-		throw new NotImplementedException("no implementado");
+		DateFormat dateFor = new SimpleDateFormat("dd-MM-yyyy");
+		dateFor.setLenient(false);
+		try {
+			dateFor.parse(date);
+		} catch (ParseException pe) {
+			return false;
+		}
+		return true;
 	}
 }
