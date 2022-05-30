@@ -183,6 +183,42 @@ public class Calculator {
 	 * este metodo devuelve cierto si la fecha es válida
 	 */
 	public static boolean isValidDate(String date) {
-		throw new NotImplementedException("no implementado");
+		if (date == null) {
+			return false;
+		}
+		if (date.length() != 10) {
+			return false;
+		}
+		String[] fecha = date.split("-");
+		int dia = Integer.parseInt(fecha[0]);
+		int mes = Integer.parseInt(fecha[1]);
+		int anio = Integer.parseInt(fecha[2]);
+		if (anio < 1) {
+			return false;
+		}
+		if (dia < 1 || dia > 31) {
+			return false;
+		}
+		if (mes < 1 || mes > 12) {
+			return false;
+		}
+		if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+			if (dia > 30) {
+				return false;
+			}
+		}
+		if (mes == 2) {
+			if (dia > 29) {
+				return false;
+			}
+			if (dia == 29) {
+				if (isLeapYear(date)) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 }
