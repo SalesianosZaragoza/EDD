@@ -65,21 +65,64 @@ public class Calculator {
                 divisores[i] = numeros.get(i);
         }
         return divisores;
-    }
+    	}
 
 	/*
 	 * Toma como parámetros una cadena de caracteres y devuelve cierto si la cadena resulta ser un palíndromo
 	 */
-	public static boolean checkIsPalindrome(String cadena) {
-		throw new NotImplementedException("no implementado");
-	}
+	private static boolean isPalindromeMethod(String cadena) {
+        String letters2 = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC           ";
+        String letters = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ:;-_,.?¿¡!·";
+        String out = cadena.toLowerCase();
+        String inver = "";
+
+        for (int i = 0; i < letters.length(); i++) {
+
+            out = out.replace(letters.charAt(i), letters2.charAt(i));
+
+        }
+
+        out = out.replace(" ", "");
+        for (int i = out.length() - 1; i >= 0; i--)
+            inver += out.charAt(i);
+        if (out.equals(inver)) {
+            return true;
+        } else {
+            return false;
+        }
+    	}
 
 	/*
 	 * Pedir un número de 0 a 99 y mostrarlo escrito. Por ejemplo, para 56
 	 * mostrar: cincuenta y seis
 	 */
 	public static String speakToMe(int n) {
-		throw new NotImplementedException("no implementado");
+        String numero = "";
+        String[] unidades = { "Cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "Diez",
+                "Once", "Doce", "Trece", "Catorce", "Quince", "Diecesies", "Diecisiete", "Dicieocho", "Dicienueve" };
+        String[] decenas = { "Cero", "Diez", "Veinte", "Treinta", "Cuarenta", "Cincuenta", "Sesenta", "Setenta",
+                "Ochenta", "Noventa" };
+        if (n < 100) {
+            if (n >= 20) {
+                numero = decimalCompleto(n, numero, unidades, decenas);
+            } else {
+                numero += unidades[n];
+            }
+            System.out.println(numero);
+        }
+        return numero;
+    	}
+	
+	private static String decimalCompleto(int n, String numero, String[] unidades, String[] decenas) {
+        if ((n % 10) != 0) {
+            numero += decenas[(n / 10)];
+            numero += " y ";
+            numero += unidades[(n % 10)];
+
+        } else {
+            numero += decenas[(n / 10)];
+        }
+        return numero;
 	}
 
 	/*
@@ -87,13 +130,46 @@ public class Calculator {
 	 * dd-MM-yyyy
 	 */
 	public static boolean isLeapYear(String fecha) {
-		throw new NotImplementedException("no implementado");
-	}
+        if (fecha.isEmpty()) {
+            return false;
+        } else {
+            return isALeapYear(fecha);
+        }
+    	}
+	
+	private static boolean isALeapYear(String fecha) {
+        String year = fecha;
+        year = fecha.substring(6);
+        int num = Integer.parseInt(year);
+        if ((num % 4 == 0) && ((num % 100 != 0)) || (num % 400 == 0)) {
+
+            return true;
+
+        } else {
+
+            return false;
+        }
+    	}
 
 	/*
 	 * este metodo devuelve cierto si la fecha es válida
 	 */
 	public static boolean isValidDate(String date) {
-		throw new NotImplementedException("no implementado");
-	}
+
+        if (date != "" && date.length() == 10) {
+
+            int day = Integer.parseInt(date.substring(0, 2));
+            int month = Integer.parseInt(date.substring(3, 5));
+            int year = Integer.parseInt(date.substring(6, 10));
+
+            if (day >= 1 && day < 32) {
+                if (month >= 1 && month < 13) {
+                    if (year != 0000) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }
