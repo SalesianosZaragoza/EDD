@@ -115,7 +115,54 @@ public class Calculator {
 	 * mostrar: cincuenta y seis
 	 */
 	public static String speakToMe(int n) {
-		throw new NotImplementedException("no implementado");
+		if (n < 0 || n > 99) {
+			throw new NotImplementedException("no implementado");
+		}
+		String[] unidades = { "Cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve" };
+		String[] decenas = { "Diez", "Once", "Doce", "Trece", "Catorce", "Quince", "Dieciséis", "Diecisiete",
+				"Dieciocho", "Diecinueve" };
+		String[] decenas2 = { "Veinte", "Treinta", "Cuarenta", "Cincuenta", "Sesenta", "Setenta", "Ochenta",
+				"Noventa" };
+				
+		if (n < 10) {
+			return unidades[n];
+		} else if (n < 20) {
+			return decenas[n - 10];
+		} else if (n == 20){
+			return decenas2[n/10-2]; 
+		} else if (n < 30) {
+			return "veinti" + unidades[n - 20];
+		} else if (n == 30){
+			return decenas2[n/10-2]; 
+		} else if (n < 40) {
+			return decenas2[n/10-2] + " y " + unidades[n - 30];
+		} else if (n == 40){
+			return decenas2[n/10-2]; 
+		} else if (n < 50) {
+			return decenas2[n/10-2] + " y " + unidades[n - 40];
+		} else if (n == 50){
+			return decenas2[n/10-2]; 
+		} else if (n < 60) {
+			return decenas2[n/10-2] + " y " + unidades[n - 50];
+		} else if (n == 60){
+			return decenas2[n/10-2]; 
+		} else if (n < 70) {
+			return decenas2[n/10-2] + " y " + unidades[n - 60];
+		} else if (n == 70){
+			return decenas2[n/10-2]; 
+		} else if (n < 80) {
+			return decenas2[n/10-2] + " y " + unidades[n - 70];
+		} else if (n == 80){
+			return decenas2[n/10-2]; 
+		} else if (n < 90) {
+			return decenas2[n/10-2] + " y " + unidades[n - 80];
+		} else if (n == 90){
+			return decenas2[n/10-2]; 
+		} else {
+			return decenas2[n/10-2] + " y " + unidades[n - 90];
+		}
+
+
 	}
 
 	/*
