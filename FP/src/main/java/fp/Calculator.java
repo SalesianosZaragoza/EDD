@@ -102,7 +102,25 @@ public class Calculator {
 	 * mostrar: cincuenta y seis
 	 */
 	public static String speakToMe(int n) {
-		throw new NotImplementedException("no implementado");
+		String cero = "Cero";
+		String[] uds = {"uno","dos","tres","cuatro","cinco","seis","siete","ocho","nueve"};
+		String[] decs = {"Diez","Veinte","Treinta","Cuarenta","Cincuenta","Sesenta","Setenta","Ochenta","Noventa"};
+		String[] teens = {"Once","Doce","Trece","Catorce","Quince","Dieciseis","Diecisiete","Dieciocho","Diecinueve"};
+		String num = "";
+
+		if (n == 0) {
+			num += cero;
+		} else if (n>10 && n<20) {
+			num += teens[n%10-1];
+		} else if (n > 9 && n%10 == 0) {
+			num += decs[n/10-1];
+		} else if (n < 10) {
+			num += uds[n-1];
+		} else {
+			num = decs[n/10-1] + " y " + uds[n%10-1];
+		}
+
+		return num;
 	}
 
 	/*
